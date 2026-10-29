@@ -1,0 +1,1584 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Python с нуля — русская учебная книга</title><style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f6f3eb;color:#20332f;font:18px/1.75 system-ui,sans-serif}
+header{padding:64px 28px;background:#20332f;color:#faf7f0}header>div,main{max-width:920px;margin:auto}header h1{font-size:44px;line-height:1.2;margin:16px 0}header p{max-width:680px;color:#c6dacb}
+main{padding:32px 24px}nav{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px;background:#eeece1;padding:26px;border-radius:12px}nav h2{grid-column:1/-1;margin:0 0 12px}
+a{color:#236654;text-decoration-thickness:1px;text-underline-offset:3px}section{padding-top:64px;margin-bottom:36px}section h1{font-size:34px;line-height:1.3}h2{color:#236654;margin-top:40px;font-size:25px}h3{font-size:21px}
+pre{background:#e9eee5;padding:20px;border-radius:8px;overflow:auto;font:15px/1.65 ui-monospace,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}details{background:#eeece1;padding:12px 18px;margin:10px 0;border-radius:8px}summary{cursor:pointer;color:#236654;font-weight:600}.item{padding-left:12px}.chapter-number{letter-spacing:2px;font-size:13px;color:#61746a}button{padding:10px 18px;border:0;border-radius:6px;cursor:pointer;font-size:16px;background:#d1e6cd;color:#20332f}
+@media(max-width:600px){nav{grid-template-columns:1fr}header h1{font-size:34px}main{padding:20px 16px}section h1{font-size:29px}}
+@media print{body{background:white;font-size:11pt}header{background:white;color:#20332f;padding:20px}header p{color:#20332f}button{display:none}nav{display:block;columns:2}nav a{display:block}section{break-before:page;padding-top:0}pre{font-size:9pt;break-inside:avoid}details{display:block}details>*{display:block!important}a{color:inherit}main{max-width:none;padding:0}}
+</style><header id="top"><div><div>УЧЕБНАЯ АДАПТАЦИЯ · 30 ТЕМ</div><h1>Python с нуля.<br>В своём темпе.</h1><p>Понятные объяснения, примеры и упражнения на русском. На основе 30 Days Of Python Асабенеха Йетайеха. Это адаптация, а не полный построчный перевод оригинала.</p><button onclick="window.print()">Печатать / сохранить в PDF</button></div></header><main><nav><h2>Оглавление</h2><a href="#day-1">01. Первые шаги</a><a href="#day-2">02. Переменные и функции</a><a href="#day-3">03. Операторы</a><a href="#day-4">04. Строки</a><a href="#day-5">05. Списки</a><a href="#day-6">06. Кортежи</a><a href="#day-7">07. Множества</a><a href="#day-8">08. Словари</a><a href="#day-9">09. Условия</a><a href="#day-10">10. Циклы</a><a href="#day-11">11. Функции</a><a href="#day-12">12. Модули</a><a href="#day-13">13. Генераторы списков</a><a href="#day-14">14. Функции высшего порядка</a><a href="#day-15">15. Ошибки</a><a href="#day-16">16. Даты и время</a><a href="#day-17">17. Исключения</a><a href="#day-18">18. Регулярные выражения</a><a href="#day-19">19. Файлы и JSON</a><a href="#day-20">20. Пакеты и pip</a><a href="#day-21">21. Классы и объекты</a><a href="#day-22">22. Сбор данных со страниц</a><a href="#day-23">23. Окружения</a><a href="#day-24">24. Статистика и NumPy</a><a href="#day-25">25. Pandas</a><a href="#day-26">26. Python для веба</a><a href="#day-27">27. MongoDB</a><a href="#day-28">28. API</a><a href="#day-29">29. Создаём API</a><a href="#day-30">30. Финальный проект</a></nav><section id="day-1"><div class="chapter-number">ГЛАВА 01 / 30</div><h1>Первые шаги: ты уже можешь писать программы</h1>
+<h2>Что мы будем делать</h2>
+<p>Python — язык, на котором человек записывает инструкции для компьютера. Программа — обычный текст с такими инструкциями. Интерпретатор Python читает этот текст и выполняет его сверху вниз. Ты будешь учиться маленькими шагами: прочитал, запустил пример, изменил его, решил задачу.</p>
+<p>30 дней — название исходного курса, а не срок сдачи. На одну главу можно потратить несколько вечеров. Если застрял, вернись к примеру и поменяй только одну строчку.</p>
+<p>Эта книга — русская учебная адаптация 30 Days Of Python Асабенеха Йетайеха с дополнительными объяснениями. Она охватывает все 30 тем, но не является дословным переводом всех упражнений и материалов оригинала. Английские главы сохранены отдельно в папке original.</p>
+<h2>Как устроена программа</h2>
+<p>Слева — оглавление. Во вкладке «Урок» читаешь объяснения. Во вкладке «Практика» редактируешь и запускаешь настоящий Python. «Заметки» — твой блокнот. Код, заметки и отметки о прохождении сохраняются на этом компьютере автоматически. Кнопка «Завершить главу» — твоя собственная отметка, она не означает сдачу экзамена.</p>
+<h2>Первая инструкция</h2>
+<pre><code>print(&quot;Привет, мир!&quot;)
+print(2 + 3)</code></pre>
+<p>print — встроенная функция: готовая команда для вывода на экран. В круглых скобках пишут, что вывести. Текст заключают в кавычки, числа — нет. Первая строка напечатает Привет, мир!, вторая — 5. Каждая инструкция здесь записана на своей строке.</p>
+<p>Слова print, if, for остаются английскими: это часть языка. Их не переводят в самом коде. В тексте и комментариях можно писать по-русски.</p>
+<h2>Python как калькулятор</h2>
+<pre><code>print(3 + 2)    # сложение: 5
+print(3 - 2)    # вычитание: 1
+print(3 * 2)    # умножение: 6
+print(3 / 2)    # деление: 1.5
+print(3 ** 2)   # степень: 9
+print(3 % 2)    # остаток: 1
+print(3 // 2)   # деление с округлением вниз: 1</code></pre>
+<p>Знак # начинает комментарий. Python пропускает всё после него до конца строки. Комментарий нужен человеку, чтобы объяснить смысл кода.</p>
+<h2>Какие бывают данные</h2>
+<pre><code>print(type(10))          # int: целое число
+print(type(3.14))        # float: дробное число
+print(type(2 + 3j))      # complex: комплексное число
+print(type(&quot;Привет&quot;))    # str: строка, то есть текст
+print(type(True))        # bool: истина или ложь
+print(type([1, 2, 3]))   # list: список
+print(type((1, 2)))      # tuple: кортеж
+print(type({1, 2}))      # set: множество
+print(type({&quot;имя&quot;: &quot;Аня&quot;}))  # dict: словарь</code></pre>
+<p>type показывает тип значения. Пока достаточно отличать число от текста. &quot;10&quot; — текст из двух символов; 10 — число, с которым можно считать.</p>
+<h2>Установка и запуск вне книги</h2>
+<p>Если эта программа уже открылась, подходящий Python у тебя установлен. Чтобы запускать отдельные файлы, установи Python 3.11 или новее с python.org. На Windows отметь Add python.exe to PATH. Редактор IDLE идёт вместе с обычным установщиком Python. VS Code — необязательный более мощный редактор.</p>
+<p>Сохрани код в файл hello.py. В терминале в папке файла выполни команду python hello.py; на macOS и Linux обычно python3 hello.py. Команды терминала не нужно вставлять в редактор Python этой книги. При запуске Python без имени файла откроется интерактивная оболочка с приглашением &gt;&gt;&gt;. Знаки &gt;&gt;&gt; не являются частью кода.</p>
+<h2>Если появилась ошибка</h2>
+<p>Проверь кавычки, скобки и написание print маленькими буквами. Используй прямые кавычки &quot; или &#x27;, а не типографские «ёлочки». Ошибка — сообщение о том, какую инструкцию Python не смог выполнить. Это нормальная часть работы.</p>
+<h2>Попробуй самостоятельно</h2>
+<p class="item">1. Выведи своё имя, возраст и страну на отдельных строках.</p>
+<p class="item">2. Посчитай сумму, разность, произведение и частное чисел 8 и 3.</p>
+<p class="item">3. Узнай типы значений 42, 4.2, &quot;42&quot;, True.</p>
+<p class="item">4. Посчитай расстояние между точками (2, 3) и (10, 8): квадратный корень из суммы квадратов разностей координат. Квадратный корень можно записать как степень 0.5.</p>
+<h2>Главное</h2>
+<p>Программа выполняется сверху вниз. Текст берётся в кавычки. print выводит результат. type помогает понять, с какими данными ты работаешь.</p><h2>Задания с подсказками</h2><h3>Первое приветствие</h3><p>Выведи ровно две строки: Привет, Python! и число 5 (результат 2 + 3).</p><pre># Напиши две команды print
+</pre><details><summary>Подсказка</summary><p>Текст в кавычках, выражение 2 + 3 без кавычек.</p></details><details><summary>Решение</summary><pre>print(&quot;Привет, Python!&quot;)
+print(2 + 3)
+</pre></details><h3>Мини-калькулятор</h3><p>Выведи сумму, произведение и результат целочисленного деления 8 и 3. Каждый ответ с новой строки.</p><pre>a = 8
+b = 3
+</pre><details><summary>Подсказка</summary><p>Операторы: +, *, //. Не перепутай / и //.</p></details><details><summary>Решение</summary><pre>a = 8
+b = 3
+print(a + b)
+print(a * b)
+print(a // b)
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-2"><div class="chapter-number">ГЛАВА 02 / 30</div><h1>Переменные и встроенные функции</h1>
+<h2>Переменная — имя для значения</h2>
+<p>Представь подписанную коробку. Надпись age помогает найти нужное значение. В Python переменная — имя, связанное с объектом. Значение вычисляется справа от знака =, а имя записывается слева.</p>
+<pre><code>name = &quot;Аня&quot;
+age = 25
+height = 1.68
+is_student = True
+print(name)
+print(age + 1)</code></pre>
+<p>В строке age = 25 мы сохраняем число 25 под именем age. print(age) выводит содержимое, а print(&quot;age&quot;) — само слово age.</p>
+<h2>Имена</h2>
+<p>Используй латинские буквы, цифры и подчёркивание. Имя не может начинаться с цифры. first_name понятнее, чем x. Python различает age и Age. Не называй переменные print, list или str: это имена полезных встроенных функций.</p>
+<pre><code>first_name = &quot;Иван&quot;
+last_name = &quot;Петров&quot;
+country, city = &quot;Россия&quot;, &quot;Казань&quot;
+year = 2026
+year = year + 1
+print(first_name, last_name, year)</code></pre>
+<p>Переменную можно связать с новым значением. В year = year + 1 сначала берётся прежний year, к нему прибавляется 1, результат сохраняется под тем же именем.</p>
+<h2>Встроенные функции</h2>
+<p>Функция получает данные в скобках и что-то делает или возвращает результат. print печатает, len считает элементы, type определяет тип, abs находит модуль числа, round округляет, min и max выбирают границы, sum складывает.</p>
+<pre><code>print(len(&quot;Python&quot;))      # 6 символов
+print(abs(-7))            # 7
+print(round(3.14159, 2))  # 3.14
+print(min(4, 8, 2))       # 2
+print(max(4, 8, 2))       # 8
+print(sum([4, 8, 2]))     # 14</code></pre>
+<p>help(print) показывает справку, dir(str) — доступные свойства и методы строк. Не нужно запоминать весь список: пользуйся справкой по мере необходимости.</p>
+<h2>Преобразование типов</h2>
+<pre><code>age_text = &quot;25&quot;
+age = int(age_text)
+price = float(&quot;19.90&quot;)
+label = str(age)
+print(age + 1)
+print(&quot;Мне &quot; + label)
+print(int(3.9))  # 3: дробная часть отбрасывается</code></pre>
+<p>int превращает подходящий текст в целое число, float — в дробное, str — в текст. int(&quot;кот&quot;) вызовет ValueError: такой текст не является числом. int(&quot;3.9&quot;) тоже не сработает; сначала нужен float. Для дробей в коде используют точку, а не запятую.</p>
+<h2>Ввод от пользователя</h2>
+<pre><code>name = input(&quot;Как тебя зовут? &quot;)
+age = int(input(&quot;Сколько тебе лет? &quot;))
+print(f&quot;Привет, {name}! Через год тебе будет {age + 1}.&quot;)</code></pre>
+<p>input всегда возвращает строку. Чтобы считать, преобразуй её в число. В этой программе строки для input заранее вводятся в поле «Входные данные»: каждое значение на новой строке. В примере нужны две строки: имя и возраст.</p>
+<h2>Практика</h2>
+<p class="item">1. Создай переменные для имени, страны, города и возраста, выведи их и их типы.</p>
+<p class="item">2. Найди длину своего имени и фамилии.</p>
+<p class="item">3. Запиши ширину и длину прямоугольника, вычисли площадь и периметр.</p>
+<p class="item">4. Получи из input год рождения и посчитай приблизительный возраст. Точный возраст зависит от того, прошёл ли день рождения.</p>
+<h2>Главное</h2>
+<p>= присваивает значение, а не сравнивает. input возвращает текст. Сначала преобразуй тип, затем считай.</p><h2>Задания с подсказками</h2><h3>Возраст через год</h3><p>Прочитай возраст из input, преврати в int и выведи возраст через год. Вход: 25.</p><pre>age_text = input()
+# Преобразуй текст и прибавь 1
+</pre><details><summary>Подсказка</summary><p>input() возвращает str. Нужно int(...).</p></details><details><summary>Решение</summary><pre>age = int(input())
+print(age + 1)
+</pre></details><h3>Длина имени</h3><p>Прочитай имя из input и выведи его длину. Вход: Анна.</p><pre>name = input()
+</pre><details><summary>Подсказка</summary><p>len считает символы строки.</p></details><details><summary>Решение</summary><pre>name = input()
+print(len(name))
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-3"><div class="chapter-number">ГЛАВА 03 / 30</div><h1>Операторы: считаем и сравниваем</h1>
+<h2>Арифметика</h2>
+<p>Оператор — знак, который выполняет действие над значениями. + складывает числа, - вычитает, * умножает, / делит с дробным результатом, // делит с округлением вниз, % возвращает остаток, ** возводит в степень.</p>
+<pre><code>print(7 / 2)    # 3.5
+print(7 // 2)   # 3
+print(-7 // 2)  # -4, округление именно вниз
+print(7 % 2)    # 1
+print(2 ** 3)   # 8
+print((2 + 3) * 4)  # 20</code></pre>
+<p>Скобки задают порядок. Без скобок умножение выполняется раньше сложения. Для практических расчётов полезнее понятная формула со скобками, чем головоломка из операторов.</p>
+<h2>Короткое присваивание</h2>
+<pre><code>score = 10
+score += 5   # то же, что score = score + 5
+score -= 2
+score *= 3
+print(score)  # 39</code></pre>
+<p>Есть также /=, //=, %= и **=. Никакого отдельного оператора ++ в Python нет.</p>
+<h2>Сравнения возвращают bool</h2>
+<pre><code>print(5 == 5)   # True: равно
+print(5 != 3)   # True: не равно
+print(5 &gt; 3)    # True: больше
+print(5 &lt;= 3)   # False: меньше или равно
+age = 20
+print(18 &lt;= age &lt; 65)</code></pre>
+<p>True означает истину, False — ложь. Одно = присваивает, два == сравнивают. Строки тоже можно сравнивать, но &quot;10&quot; и 10 — разные значения разных типов.</p>
+<h2>Логика: and, or, not</h2>
+<pre><code>age = 20
+has_ticket = True
+print(age &gt;= 18 and has_ticket)  # оба условия истинны
+print(age &lt; 18 or has_ticket)    # хотя бы одно истинно
+print(not has_ticket)           # отрицание</code></pre>
+<p>and — «и», or — «или», not — «не». В логических условиях пустая строка, пустой список, число 0 и None считаются ложными. Остальные непустые значения обычно истинны. and и or могут возвращать сами операнды, а не только True и False.</p>
+<h2>Принадлежность и идентичность</h2>
+<pre><code>print(&quot;кот&quot; in &quot;котёнок&quot;)       # True
+print(4 not in [1, 2, 3])      # True
+value = None
+print(value is None)           # True</code></pre>
+<p>in проверяет наличие. is проверяет, один ли это объект в памяти. Для обычного сравнения чисел и строк нужен ==. Проверку отсутствующего значения принято писать is None.</p>
+<h2>Применение формул</h2>
+<pre><code>base = 20
+height = 10
+triangle_area = 0.5 * base * height
+radius = 10
+circle_area = 3.141592653589793 * radius ** 2
+print(triangle_area)
+print(circle_area)</code></pre>
+<p>Дробные числа хранятся с ограниченной точностью: 0.1 + 0.2 может выглядеть как 0.30000000000000004. Для проверки близости используют math.isclose, а для денежных расчётов — Decimal или целые копейки.</p>
+<h2>Практика</h2>
+<p class="item">1. Вычисли площадь треугольника, периметр прямоугольника и длину окружности.</p>
+<p class="item">2. Проверь чётность числа через остаток от деления на 2.</p>
+<p class="item">3. Проверь, что возраст входит в интервал от 18 до 30 включительно.</p>
+<p class="item">4. Посчитай недельный заработок по ставке за час и числу часов.</p>
+<p class="item">5. Сравни длины слов python и dragon. Проверь наличие on в обоих словах.</p><h2>Задания с подсказками</h2><h3>Чётное число</h3><p>Для n = 14 выведи True, если оно чётное, иначе False.</p><pre>n = 14
+</pre><details><summary>Подсказка</summary><p>У чётного числа остаток от деления на 2 равен нулю.</p></details><details><summary>Решение</summary><pre>n = 14
+print(n % 2 == 0)
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-4"><div class="chapter-number">ГЛАВА 04 / 30</div><h1>Строки: работаем с текстом</h1>
+<h2>Создание и соединение</h2>
+<p>Строка str — последовательность символов. Её можно записать в одинарных или двойных кавычках. Тройные кавычки позволяют разместить текст на нескольких строках.</p>
+<pre><code>first = &quot;Анна&quot;
+last = &#x27;Иванова&#x27;
+full = first + &quot; &quot; + last
+print(full)
+print(&quot;ха&quot; * 3)
+print(&quot;Первая строка\nВторая строка&quot;)
+print(&quot;Имя\tВозраст&quot;)</code></pre>
+<p>\n обозначает перенос строки, \t — табуляцию, \\ — обратную косую черту. Для кавычки внутри строки можно использовать другой вид внешних кавычек или экранирование: &quot;Он сказал: \&quot;Привет\&quot;&quot;.</p>
+<h2>Форматирование</h2>
+<pre><code>name = &quot;Аня&quot;
+age = 25
+price = 19.9
+print(f&quot;{name}, через год тебе {age + 1}&quot;)
+print(f&quot;Цена: {price:.2f} руб.&quot;)
+print(&quot;{}: {}&quot;.format(name, age))
+print(&quot;%s: %d&quot; % (name, age))</code></pre>
+<p>Для нового кода обычно удобнее f-строка: перед кавычками ставится f, внутри фигурных скобок — выражения. :.2f показывает ровно два знака после точки. Старые способы встречаются в чужом коде, поэтому полезно узнавать их.</p>
+<h2>Индексы и срезы</h2>
+<pre><code>word = &quot;Python&quot;
+print(word[0])     # P: считаем с нуля
+print(word[-1])    # n: последний символ
+print(word[0:3])   # Pyt: позиции 0, 1, 2
+print(word[2:])    # thon
+print(word[:2])    # Py
+print(word[::2])   # Pto
+print(word[::-1])  # nohtyP</code></pre>
+<p>В срезе [начало:конец:шаг] конец не включается. Обращение к несуществующему индексу вызывает IndexError. Срез за пределами строки допустим. Строки неизменяемы: word[0] = &quot;J&quot; не сработает. Нужно создать новую строку.</p>
+<h2>Методы строк</h2>
+<p>Метод — функция, которую вызывают через точку у конкретного объекта. Методы ниже возвращают новый результат, исходный текст не меняют.</p>
+<pre><code>text = &quot;  Привет, Python!  &quot;
+print(text.strip())                 # убирает пробелы с краёв
+print(text.lower())                 # нижний регистр
+print(text.upper())                 # верхний регистр
+print(text.replace(&quot;Python&quot;, &quot;мир&quot;))
+print(&quot;яблоко,груша&quot;.split(&quot;,&quot;))    # список частей
+print(&quot; / &quot;.join([&quot;Москва&quot;, &quot;Казань&quot;]))
+print(&quot;банан&quot;.count(&quot;а&quot;))           # 2
+print(&quot;банан&quot;.find(&quot;на&quot;))           # 2; -1, если не найдено
+print(&quot;банан&quot;.index(&quot;на&quot;))          # ValueError, если не найдено</code></pre>
+<p>split разбивает одну строку, join соединяет список строк. strip(&quot;ab&quot;) удаляет любые символы a и b с обоих краёв, а не конкретное слово ab.</p>
+<h2>Другие полезные методы</h2>
+<pre><code>print(&quot;python&quot;.capitalize())     # Python
+print(&quot;hello world&quot;.title())     # Hello World
+print(&quot;PyThOn&quot;.swapcase())       # pYtHoN
+print(&quot;main.py&quot;.endswith(&quot;.py&quot;))
+print(&quot;https://example.com&quot;.startswith(&quot;https://&quot;))
+print(&quot;123&quot;.isdigit())
+print(&quot;abc&quot;.isalpha())
+print(&quot;abc123&quot;.isalnum())
+print(&quot;user_name&quot;.isidentifier())
+print(&quot;abc&quot;.islower(), &quot;ABC&quot;.isupper())
+print(&quot;   &quot;.isspace())
+print(&quot;a-b-a&quot;.rfind(&quot;a&quot;))         # последний найденный индекс</code></pre>
+<p>isdecimal, isdigit и isnumeric проверяют разные классы числовых символов Unicode; они не заменяют попытку преобразования float. expandtabs заменяет табуляции пробелами. Не пытайся запомнить всё за вечер.</p>
+<h2>Практика</h2>
+<p class="item">1. Собери строку «30 дней Python» через join.</p>
+<p class="item">2. Удали пробелы по краям имени и приведи его к заглавной первой букве.</p>
+<p class="item">3. Найди первое и последнее вхождение слова в предложении.</p>
+<p class="item">4. Замени Python на программирование в фразе «Я учу Python».</p>
+<p class="item">5. Выведи первые три символа слова и его обратную запись.</p><h2>Задания с подсказками</h2><h3>Чистое имя</h3><p>Убери пробелы по краям name и выведи имя с заглавной первой буквой.</p><pre>name = &quot;  анна  &quot;
+</pre><details><summary>Подсказка</summary><p>Последовательно вызови strip() и capitalize().</p></details><details><summary>Решение</summary><pre>name = &quot;  анна  &quot;
+print(name.strip().capitalize())
+</pre></details><h3>Обратное слово</h3><p>Выведи слово Python в обратном порядке.</p><pre>word = &quot;Python&quot;
+</pre><details><summary>Подсказка</summary><p>Срез с шагом -1: [::-1].</p></details><details><summary>Решение</summary><pre>word = &quot;Python&quot;
+print(word[::-1])
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-5"><div class="chapter-number">ГЛАВА 05 / 30</div><h1>Списки: несколько значений вместе</h1>
+<h2>Создание и чтение</h2>
+<p>Список list — упорядоченная изменяемая коллекция. Представь список покупок: можно дописать продукт, удалить его или заменить. Элементы могут иметь разные типы, хотя часто удобнее хранить однотипные данные.</p>
+<pre><code>fruits = [&quot;яблоко&quot;, &quot;банан&quot;, &quot;груша&quot;]
+empty = []
+print(len(fruits))
+print(fruits[0])
+print(fruits[-1])
+print(fruits[1:])
+fruits[1] = &quot;апельсин&quot;</code></pre>
+<p>Индексы и срезы устроены так же, как у строк. В отличие от строки, элемент списка можно заменить. Индекс вне диапазона вызовет IndexError.</p>
+<h2>Добавление и удаление</h2>
+<pre><code>items = [&quot;хлеб&quot;, &quot;молоко&quot;]
+items.append(&quot;чай&quot;)             # один элемент в конец
+items.insert(1, &quot;сыр&quot;)          # вставить перед индексом 1
+items.extend([&quot;рис&quot;, &quot;соль&quot;])   # добавить элементы коллекции
+items.remove(&quot;молоко&quot;)          # удалить первое совпадение
+last = items.pop()              # удалить и вернуть последний
+del items[0]                    # удалить по индексу
+print(items, last)</code></pre>
+<p>remove вызовет ValueError, если значения нет. pop на пустом списке вызовет IndexError. clear очищает весь список. append([1, 2]) добавит один вложенный список, extend([1, 2]) добавит два отдельных числа.</p>
+<h2>Поиск, порядок и сортировка</h2>
+<pre><code>numbers = [3, 1, 2, 1]
+print(2 in numbers)
+print(numbers.count(1))  # 2
+print(numbers.index(2))  # 2
+print(sorted(numbers))  # новый отсортированный список
+print(numbers)          # старый порядок
+numbers.sort()          # меняет сам список
+numbers.reverse()       # разворачивает текущий порядок
+print(numbers)</code></pre>
+<p>sort и reverse возвращают None. Ошибка новичка: numbers = numbers.sort(). После этого numbers больше не список, а None. Для убывания используй sort(reverse=True). Сравнивать числа со строками при сортировке нельзя без явного правила key.</p>
+<h2>Копирование — важная ловушка</h2>
+<pre><code>a = [1, 2]
+b = a
+b.append(3)
+print(a)          # [1, 2, 3]: это тот же список
+c = a.copy()
+c.append(4)
+print(a)          # [1, 2, 3]: копия отдельно</code></pre>
+<p>Присваивание не создаёт копию объекта. copy и срез [:] создают поверхностную копию: вложенные списки внутри по-прежнему общие. Для полной независимости вложенных структур есть copy.deepcopy.</p>
+<h2>Распаковка и объединение</h2>
+<pre><code>first, second, *rest = [10, 20, 30, 40]
+print(first, second, rest)
+print([1, 2] + [3, 4])
+print([0] * 3)
+matrix = [[1, 2], [3, 4]]
+print(matrix[1][0])  # 3</code></pre>
+<p>Не создавай таблицу как [[0] * 3] * 3, если будешь менять строки: все строки окажутся одним объектом. Позже научимся делать независимые строки через генератор списка.</p>
+<h2>Практика</h2>
+<p class="item">1. Составь список из пяти любимых блюд, выведи первый, средний и последний элементы.</p>
+<p class="item">2. Добавь блюдо в конец и в начало. Удали одно по значению и одно по индексу.</p>
+<p class="item">3. Отсортируй список возрастов и найди минимальный и максимальный.</p>
+<p class="item">4. Создай копию списка и убедись, что добавление в копию не меняет исходный список.</p><h2>Задания с подсказками</h2><h3>Список покупок</h3><p>Добавь чай в конец списка. Выведи длину, затем последний элемент, на отдельных строках.</p><pre>items = [&quot;хлеб&quot;, &quot;молоко&quot;]
+</pre><details><summary>Подсказка</summary><p>append добавляет, len считает, [-1] достаёт последний элемент.</p></details><details><summary>Решение</summary><pre>items = [&quot;хлеб&quot;, &quot;молоко&quot;]
+items.append(&quot;чай&quot;)
+print(len(items))
+print(items[-1])
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-6"><div class="chapter-number">ГЛАВА 06 / 30</div><h1>Кортежи: последовательность без изменений</h1>
+<h2>Чем кортеж отличается от списка</h2>
+<p>Кортеж tuple — упорядоченная коллекция, элементы которой нельзя заменить после создания. Он подходит для координат, даты или фиксированного набора полей. Список удобен там, где набор нужно менять.</p>
+<pre><code>point = (10, 20)
+print(point[0])
+print(point[-1])
+print(len(point))
+print(point[:1])
+empty = ()
+single = (42,)  # запятая обязательна!
+print(type(single))</code></pre>
+<p>(42) — просто число в скобках. Кортеж создаёт именно запятая. Можно написать point = 10, 20, но скобки часто лучше читаются.</p>
+<h2>Методы и преобразования</h2>
+<pre><code>values = (1, 2, 2, 3)
+print(values.count(2))  # 2
+print(values.index(3))  # 3
+print(2 in values)
+print(values + (4, 5))
+editable = list(values)
+editable.append(4)
+new_values = tuple(editable)
+print(new_values)</code></pre>
+<p>У кортежа нет append, remove или sort. Чтобы получить изменённую последовательность, создают новый кортеж. del values удаляет имя переменной, а не отдельный элемент кортежа.</p>
+<h2>Распаковка</h2>
+<pre><code>person = (&quot;Аня&quot;, 25, &quot;Казань&quot;)
+name, age, city = person
+print(name, age, city)
+first, *middle, last = (1, 2, 3, 4)
+print(first, middle, last)</code></pre>
+<p>Число переменных должно совпадать с числом элементов, если нет звёздочки. Переменная со звёздочкой получает список оставшихся элементов.</p>
+<h2>Тонкость неизменяемости</h2>
+<pre><code>record = (&quot;покупки&quot;, [&quot;хлеб&quot;])
+record[1].append(&quot;сыр&quot;)
+print(record)</code></pre>
+<p>Кортеж запрещает замену своих ссылок на элементы. Но изменяемый список внутри кортежа может меняться. Это пригодится, когда будешь разбираться с вложенными данными.</p>
+<h2>Практика</h2>
+<p class="item">1. Создай кортеж имён братьев, сестёр или друзей. Узнай его длину.</p>
+<p class="item">2. Объедини два кортежа, достань первый и последний элементы.</p>
+<p class="item">3. Преобразуй кортеж в список, добавь элемент и преобразуй обратно.</p>
+<p class="item">4. Распакуй координаты x и y и посчитай расстояние до начала координат: (x ** 2 + y ** 2) ** 0.5.</p><h2>Задания с подсказками</h2><h3>Координаты</h3><p>Распакуй point в x и y, выведи сумму координат.</p><pre>point = (10, 20)
+</pre><details><summary>Подсказка</summary><p>Слева от = можно написать x, y.</p></details><details><summary>Решение</summary><pre>point = (10, 20)
+x, y = point
+print(x + y)
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-7"><div class="chapter-number">ГЛАВА 07 / 30</div><h1>Множества: только уникальные значения</h1>
+<h2>Зачем нужно множество</h2>
+<p>Множество set хранит уникальные элементы и удобно для проверки принадлежности. Повторения исчезают. На порядок вывода полагаться нельзя: у множества нет индексов и срезов.</p>
+<pre><code>tags = {&quot;Python&quot;, &quot;учёба&quot;, &quot;Python&quot;}
+print(len(tags))  # 2
+print(&quot;Python&quot; in tags)
+empty = set()    # {} создаёт словарь!
+numbers = set([1, 1, 2, 3])
+print(sorted(numbers))  # для предсказуемого вывода</code></pre>
+<p>Элементы множества должны быть хешируемыми: подходят строки, числа, многие кортежи. Список или словарь добавить нельзя, потому что они изменяемы и не хешируются.</p>
+<h2>Изменение</h2>
+<pre><code>skills = {&quot;Python&quot;}
+skills.add(&quot;SQL&quot;)
+skills.update([&quot;Git&quot;, &quot;SQL&quot;])
+skills.remove(&quot;Git&quot;)       # ошибка, если элемента нет
+skills.discard(&quot;Java&quot;)     # без ошибки, если нет
+print(sorted(skills))</code></pre>
+<p>pop удаляет произвольный элемент и возвращает его; на пустом множестве вызывает KeyError. clear очищает множество. del удаляет имя.</p>
+<h2>Операции как на кругах Эйлера</h2>
+<pre><code>a = {1, 2, 3}
+b = {3, 4}
+print(sorted(a | b))  # объединение: 1, 2, 3, 4
+print(sorted(a &amp; b))  # пересечение: 3
+print(sorted(a - b))  # только в a: 1, 2
+print(sorted(a ^ b))  # только в одном из двух: 1, 2, 4</code></pre>
+<p>Те же действия доступны как union, intersection, difference и symmetric_difference. Методы intersection_update и difference_update меняют исходное множество. Обычные intersection и difference создают новое.</p>
+<h2>Подмножество и непересекающиеся наборы</h2>
+<pre><code>print({1, 2}.issubset({1, 2, 3}))    # True
+print({1, 2, 3}.issuperset({1, 2}))  # True
+print({1, 2}.isdisjoint({3, 4}))    # True: нет общих
+print({1, 2} &lt;= {1, 2, 3})          # подмножество</code></pre>
+<p>Строгое подмножество обозначается &lt; и не может быть равно исходному набору. Неизменяемый вариант множества — frozenset.</p>
+<h2>Практика</h2>
+<p class="item">1. Из списка возрастов убери повторы и сравни длины списка и множества.</p>
+<p class="item">2. Найди общих друзей двух людей через пересечение.</p>
+<p class="item">3. Найди навыки, которые есть у первого человека, но нет у второго.</p>
+<p class="item">4. Разбей предложение через split и посчитай число уникальных слов. lower поможет не различать Python и python; знаки препинания потребуют дополнительной очистки.</p><h2>Задания с подсказками</h2><h3>Уникальные числа</h3><p>Удали повторы через set и выведи отсортированный список уникальных чисел.</p><pre>values = [3, 1, 3, 2, 1]
+</pre><details><summary>Подсказка</summary><p>set убирает повторы, sorted возвращает упорядоченный список.</p></details><details><summary>Решение</summary><pre>values = [3, 1, 3, 2, 1]
+print(sorted(set(values)))
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-8"><div class="chapter-number">ГЛАВА 08 / 30</div><h1>Словари: значения с подписями</h1>
+<h2>Ключ и значение</h2>
+<p>Словарь dict хранит пары «ключ → значение». В списке к данным обращаются по номеру, в словаре — по осмысленному ключу. Ключи уникальны и должны быть хешируемыми; значения могут быть любыми.</p>
+<pre><code>person = {&quot;name&quot;: &quot;Аня&quot;, &quot;age&quot;: 25, &quot;skills&quot;: [&quot;Python&quot;]}
+print(person[&quot;name&quot;])
+print(person.get(&quot;city&quot;, &quot;Город не указан&quot;))
+person[&quot;city&quot;] = &quot;Казань&quot;
+person[&quot;age&quot;] = 26
+person[&quot;skills&quot;].append(&quot;SQL&quot;)
+print(person)</code></pre>
+<p>Обращение person[&quot;missing&quot;] вызовет KeyError. get вернёт None или указанный запасной результат. В Python 3.7+ словарь сохраняет порядок добавления, но обычная проверка равенства словарей от порядка не зависит.</p>
+<h2>Проверки и просмотр</h2>
+<pre><code>prices = {&quot;хлеб&quot;: 50, &quot;чай&quot;: 120}
+print(&quot;хлеб&quot; in prices)           # ищет среди ключей
+print(list(prices.keys()))
+print(list(prices.values()))
+print(list(prices.items()))       # пары (ключ, значение)
+print(len(prices))</code></pre>
+<p>keys, values и items возвращают представления содержимого. list превращает их в обычные списки. Для поиска по значениям используй value in prices.values().</p>
+<h2>Удаление и объединение</h2>
+<pre><code>data = {&quot;a&quot;: 1, &quot;b&quot;: 2}
+removed = data.pop(&quot;a&quot;)
+data.update({&quot;b&quot;: 20, &quot;c&quot;: 3})
+copy = data.copy()
+del data[&quot;c&quot;]
+print(data, copy, removed)</code></pre>
+<p>pop без запасного значения выдаст KeyError, если ключа нет. popitem удаляет последнюю добавленную пару. clear очищает словарь. copy создаёт поверхностную копию: вложенные списки остаются общими.</p>
+<h2>Вложенные данные</h2>
+<pre><code>student = {
+    &quot;name&quot;: &quot;Илья&quot;,
+    &quot;address&quot;: {&quot;city&quot;: &quot;Пермь&quot;},
+    &quot;grades&quot;: [4, 5, 5],
+}
+print(student[&quot;address&quot;][&quot;city&quot;])
+print(sum(student[&quot;grades&quot;]) / len(student[&quot;grades&quot;]))</code></pre>
+<p>Читай такие обращения по шагам: сначала достали address из student, затем city из полученного словаря.</p>
+<h2>Практика</h2>
+<p class="item">1. Создай словарь для питомца: имя, возраст, цвет.</p>
+<p class="item">2. Добавь владельца, измени возраст и удали цвет.</p>
+<p class="item">3. Получи список ключей и список значений.</p>
+<p class="item">4. Создай словарь студента со списком навыков, добавь два навыка.</p><h2>Задания с подсказками</h2><h3>Новый возраст</h3><p>Увеличь возраст в словаре на 1. Выведи имя и новый возраст через один пробел.</p><pre>person = {&quot;name&quot;: &quot;Аня&quot;, &quot;age&quot;: 25}
+</pre><details><summary>Подсказка</summary><p>Обращение к значению: person[&quot;age&quot;]. print(a, b) сам вставляет пробел.</p></details><details><summary>Решение</summary><pre>person = {&quot;name&quot;: &quot;Аня&quot;, &quot;age&quot;: 25}
+person[&quot;age&quot;] += 1
+print(person[&quot;name&quot;], person[&quot;age&quot;])
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-9"><div class="chapter-number">ГЛАВА 09 / 30</div><h1>Условия: программа выбирает действие</h1>
+<h2>if, elif, else</h2>
+<p>Условие позволяет выполнить блок только при определённом результате проверки. После условия ставится двоеточие. Блок сдвигается вправо на четыре пробела.</p>
+<pre><code>age = 17
+if age &gt;= 18:
+    print(&quot;Можно получить взрослый билет&quot;)
+else:
+    print(&quot;Нужен детский билет&quot;)</code></pre>
+<p>Отступы — часть синтаксиса, а не украшение. Все строки одного блока должны иметь одинаковый отступ. В редакторе этой книги Tab вставляет четыре пробела.</p>
+<h2>Несколько вариантов</h2>
+<pre><code>temperature = 12
+if temperature &lt; 0:
+    print(&quot;Мороз&quot;)
+elif temperature &lt; 15:
+    print(&quot;Прохладно&quot;)
+else:
+    print(&quot;Тепло&quot;)</code></pre>
+<p>Проверки идут сверху вниз. Выполняется только первая подходящая ветка. Вторая проверка уже подразумевает, что первая оказалась ложной. Если написать несколько отдельных if, могут выполниться несколько блоков.</p>
+<h2>Сложные условия</h2>
+<pre><code>age = 22
+has_ticket = True
+if age &gt;= 18 and has_ticket:
+    print(&quot;Проходи&quot;)
+elif age &lt; 18:
+    print(&quot;Пока рано&quot;)
+else:
+    print(&quot;Нужно купить билет&quot;)</code></pre>
+<p>Условия можно вкладывать друг в друга, но несколько уровней вложенности быстро мешают чтению. Часто понятнее объединить проверки через and или or.</p>
+<h2>Короткая запись и пустые значения</h2>
+<pre><code>score = 75
+result = &quot;зачёт&quot; if score &gt;= 60 else &quot;попробуй ещё&quot;
+print(result)
+name = &quot;&quot;
+if not name:
+    print(&quot;Имя пока не заполнено&quot;)</code></pre>
+<p>Короткая запись удобна для выбора одного значения. Длинные действия лучше записывать обычным блоком if. Пустая строка, пустые коллекции, 0 и None ложны в условиях.</p>
+<h2>Практика</h2>
+<p class="item">1. По возрасту выведи, можно ли водить автомобиль при пороге 18 лет.</p>
+<p class="item">2. Сравни два числа и учти равенство.</p>
+<p class="item">3. По оценке от 0 до 100 назначь результат: 90+ отлично, 70+ хорошо, 60+ удовлетворительно, иначе нужна практика. Отдельно проверь неверные значения.</p>
+<p class="item">4. Добавь фрукт в список, только если его там ещё нет.</p>
+<p class="item">5. Проверь, что в словаре человека есть ключ skills, и только затем прочитай его.</p><h2>Задания с подсказками</h2><h3>Билет</h3><p>Если age &gt;= 18, выведи взрослый, иначе детский. Используй if и else.</p><pre>age = 17
+</pre><details><summary>Подсказка</summary><p>После условий нужны двоеточия, внутри веток — четыре пробела.</p></details><details><summary>Решение</summary><pre>age = 17
+if age &gt;= 18:
+    print(&quot;взрослый&quot;)
+else:
+    print(&quot;детский&quot;)
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-10"><div class="chapter-number">ГЛАВА 10 / 30</div><h1>Циклы: повторяем без копирования кода</h1>
+<h2>for перебирает элементы</h2>
+<pre><code>for fruit in [&quot;яблоко&quot;, &quot;груша&quot;, &quot;банан&quot;]:
+    print(fruit)</code></pre>
+<p>На каждом шаге очередной элемент попадает в переменную fruit. Затем выполняется блок с отступом. Имя переменной выбираешь ты.</p>
+<h2>range и подсчёт</h2>
+<pre><code>for number in range(1, 6):
+    print(number)
+total = 0
+for number in range(1, 101):
+    total += number
+print(total)  # 5050</code></pre>
+<p>range(5) даёт 0, 1, 2, 3, 4. range(1, 6) — числа от 1 до 5. Правая граница не включается. Третий аргумент задаёт шаг: range(10, 0, -2) даёт 10, 8, 6, 4, 2. Нулевой шаг запрещён.</p>
+<h2>while повторяет, пока условие истинно</h2>
+<pre><code>count = 3
+while count &gt; 0:
+    print(count)
+    count -= 1
+print(&quot;Старт!&quot;)</code></pre>
+<p>Не забудь менять значение, от которого зависит условие, иначе получится бесконечный цикл. Здесь запуск автоматически останавливается через несколько секунд; кнопка «Стоп» тоже завершает процесс.</p>
+<h2>break, continue и else</h2>
+<pre><code>for number in range(1, 10):
+    if number == 3:
+        continue      # пропустить остаток этого шага
+    if number == 6:
+        break         # закончить весь цикл
+    print(number)</code></pre>
+<p>else после цикла выполняется, если цикл закончился без break. Это удобно при поиске.</p>
+<pre><code>for number in [1, 3, 5]:
+    if number % 2 == 0:
+        print(&quot;Нашли чётное&quot;)
+        break
+else:
+    print(&quot;Чётных нет&quot;)</code></pre>
+<p>pass — пустая инструкция-заглушка. Она не пропускает шаг и не завершает цикл.</p>
+<h2>Индексы, пары и вложенные циклы</h2>
+<pre><code>for index, name in enumerate([&quot;Аня&quot;, &quot;Илья&quot;], start=1):
+    print(index, name)
+for key, value in {&quot;чай&quot;: 120, &quot;хлеб&quot;: 50}.items():
+    print(key, value)
+for row in range(2):
+    for column in range(3):
+        print(row, column)</code></pre>
+<p>enumerate даёт номер и элемент. Цикл по словарю без items перебирает ключи. Во вложенном цикле внутренний полностью отрабатывает для каждого шага внешнего. Не удаляй элементы списка во время прямого перебора: перебирай копию или собирай новый список.</p>
+<h2>Практика</h2>
+<p class="item">1. Выведи числа от 0 до 10 через for и через while.</p>
+<p class="item">2. Нарисуй треугольник из семи строк символов #.</p>
+<p class="item">3. Посчитай отдельно суммы чётных и нечётных чисел от 0 до 100.</p>
+<p class="item">4. Найди первое число больше 10 в списке и остановись.</p>
+<p class="item">5. Выведи таблицу умножения от 1 до 9 вложенными циклами.</p><h2>Задания с подсказками</h2><h3>Сумма от 1 до 100</h3><p>Посчитай сумму чисел от 1 до 100 включительно с помощью for и выведи результат.</p><pre>total = 0
+# Добавляй каждое число к total
+</pre><details><summary>Подсказка</summary><p>Правая граница range не включается, поэтому нужна 101.</p></details><details><summary>Решение</summary><pre>total = 0
+for n in range(1, 101):
+    total += n
+print(total)
+</pre></details><h3>Обратный отсчёт</h3><p>Через while выведи 3, 2, 1 на отдельных строках.</p><pre>count = 3
+</pre><details><summary>Подсказка</summary><p>Уменьшай count внутри цикла, иначе он не закончится.</p></details><details><summary>Решение</summary><pre>count = 3
+while count &gt; 0:
+    print(count)
+    count -= 1
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-11"><div class="chapter-number">ГЛАВА 11 / 30</div><h1>Функции: даём имя действию</h1>
+<h2>Зачем выносить код в функцию</h2>
+<p>Если одно действие повторяется, запиши его один раз и вызывай по имени. Функция помогает разбить большую задачу на маленькие понятные части.</p>
+<pre><code>def greet(name):
+    return f&quot;Привет, {name}!&quot;
+
+message = greet(&quot;Аня&quot;)
+print(message)</code></pre>
+<p>def начинает определение. name — параметр: место для будущего значения. &quot;Аня&quot; — аргумент: конкретное значение при вызове. После двоеточия идёт блок с отступом. Пока функцию не вызвали, её тело не выполняется.</p>
+<h2>return и print — разные вещи</h2>
+<pre><code>def add(a, b):
+    return a + b
+
+result = add(2, 3)
+print(result * 10)  # 50</code></pre>
+<p>return отдаёт результат вызывающему коду и завершает функцию. print лишь показывает текст на экране. Если return отсутствует, функция возвращает None. Чтобы использовать результат дальше в расчётах, его нужно вернуть.</p>
+<h2>Аргументы по позиции и имени</h2>
+<pre><code>def introduce(name, city=&quot;Казань&quot;):
+    return f&quot;{name}, город {city}&quot;
+
+print(introduce(&quot;Аня&quot;))
+print(introduce(city=&quot;Пермь&quot;, name=&quot;Илья&quot;))</code></pre>
+<p>Значение по умолчанию используется, когда аргумент не передан. Обычные обязательные параметры идут перед параметрами с умолчанием. Именованные аргументы делают вызов понятнее.</p>
+<h2>Несколько результатов и любое число аргументов</h2>
+<pre><code>def bounds(numbers):
+    return min(numbers), max(numbers)
+
+low, high = bounds([4, 2, 9])
+print(low, high)
+
+def total(*numbers):
+    return sum(numbers)
+
+def describe(**fields):
+    return fields
+
+print(total(1, 2, 3))
+print(describe(name=&quot;Аня&quot;, age=25))</code></pre>
+<p>Несколько возвращаемых значений упаковываются в кортеж. *numbers собирает позиционные аргументы в кортеж, **fields — именованные в словарь. При вызове *list распаковывает список в аргументы, **dict — словарь в именованные аргументы.</p>
+<h2>Область видимости</h2>
+<pre><code>rate = 10
+def calculate(hours):
+    pay = hours * rate
+    return pay
+
+print(calculate(3))</code></pre>
+<p>pay — локальная переменная: существует внутри вызова. rate читается из внешней области. Предпочитай передавать нужные данные параметрами и возвращать результат. Изменение глобального состояния через global делает код сложнее для понимания.</p>
+<h2>Не используй изменяемое значение по умолчанию</h2>
+<p>Вместо def add_item(item, items=[]) пиши так:</p>
+<pre><code>def add_item(item, items=None):
+    if items is None:
+        items = []
+    items.append(item)
+    return items
+
+print(add_item(&quot;чай&quot;))
+print(add_item(&quot;хлеб&quot;))</code></pre>
+<p>Значения по умолчанию создаются при определении функции, а не при каждом вызове. Один список по умолчанию неожиданно накапливал бы элементы между вызовами.</p>
+<h2>Практика</h2>
+<p class="item">1. Напиши функцию площади круга с параметром radius.</p>
+<p class="item">2. Напиши функцию is_even, возвращающую bool.</p>
+<p class="item">3. Напиши функцию, которая принимает список и возвращает среднее. Реши, как обрабатывать пустой список.</p>
+<p class="item">4. Напиши функцию проверки простого числа: число больше 1, которое делится только на 1 и себя.</p><h2>Задания с подсказками</h2><h3>Функция площади</h3><p>Определи rectangle_area(width, height), возвращающую площадь. Последнюю строку оставь.</p><pre># Напиши функцию здесь
+
+print(rectangle_area(5, 3))
+</pre><details><summary>Подсказка</summary><p>Нужен return, а не print внутри функции.</p></details><details><summary>Решение</summary><pre>def rectangle_area(width, height):
+    return width * height
+
+print(rectangle_area(5, 3))
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-12"><div class="chapter-number">ГЛАВА 12 / 30</div><h1>Модули: используем готовые инструменты</h1>
+<h2>Что такое модуль</h2>
+<p>Модуль — файл с кодом Python. Через import можно получить доступ к его функциям, классам и значениям. В стандартной библиотеке много готовых инструментов: их не нужно устанавливать.</p>
+<pre><code>import math
+print(math.sqrt(81))
+print(math.pi)
+print(math.ceil(2.1))
+print(math.floor(2.9))
+print(math.log(100, 10))</code></pre>
+<p>math.sqrt — функция sqrt из модуля math. Точка указывает, где искать имя. Название своего файла math.py затенит стандартный модуль: выбирай собственные имена вроде geometry.py.</p>
+<h2>Разные способы импорта</h2>
+<pre><code>from math import sqrt, pi
+import statistics as stats
+print(sqrt(16), pi)
+print(stats.mean([2, 4, 6]))</code></pre>
+<p>as задаёт короткое имя. from module import * затрудняет понимание происхождения имён; для учебного и рабочего кода лучше явные импорты.</p>
+<h2>Свой модуль</h2>
+<p>Сохрани отдельно файл helpers.py:</p>
+<pre><code>def full_name(first, last):
+    return f&quot;{first} {last}&quot;</code></pre>
+<p>В той же папке создай main.py:</p>
+<pre><code>from helpers import full_name
+print(full_name(&quot;Анна&quot;, &quot;Иванова&quot;))</code></pre>
+<p>Эти два блока — разные файлы, а не один пример. Встроенный редактор запускает один файл за раз в папке практики; для примера с несколькими файлами сохрани helpers.py в папке практики, доступной из меню программы. Код верхнего уровня модуля выполняется при первом импорте. Для запуска только при непосредственном старте файла используют if __name__ == &quot;__main__&quot;:.</p>
+<h2>Случайные значения и строки</h2>
+<pre><code>import random
+import string
+print(random.randint(1, 6))
+print(random.choice([&quot;чай&quot;, &quot;кофе&quot;]))
+print(string.ascii_letters)
+print(string.digits)</code></pre>
+<p>randint включает обе границы. random.random даёт дробь от 0 включительно до 1 не включительно. random полезен для игр, но для паролей и токенов нужен модуль secrets.</p>
+<h2>Система и аргументы запуска</h2>
+<pre><code>import sys
+from pathlib import Path
+print(sys.version.split()[0])
+print(Path.cwd())
+print(sys.argv)</code></pre>
+<p>sys.argv содержит имя запускаемого файла и аргументы командной строки. os предоставляет работу с операционной системой: os.getcwd, os.listdir и os.makedirs. Для путей часто удобнее pathlib. Не запускай удаление папок, не понимая точный путь.</p>
+<h2>Практика</h2>
+<p class="item">1. С помощью math посчитай площадь круга и квадратный корень.</p>
+<p class="item">2. Сделай бросок кубика через random.randint.</p>
+<p class="item">3. Собери случайный учебный идентификатор из букв и цифр; для настоящего секретного токена используй secrets.token_urlsafe.</p>
+<p class="item">4. Вынеси функцию площади прямоугольника в отдельный модуль и импортируй её.</p><h2>Задания с подсказками</h2><h3>Квадратный корень</h3><p>Импортируй math, выведи math.sqrt(81).</p><pre># Импорт и вызов функции
+</pre><details><summary>Подсказка</summary><p>sqrt возвращает дробное число, поэтому ответ 9.0.</p></details><details><summary>Решение</summary><pre>import math
+print(math.sqrt(81))
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-13"><div class="chapter-number">ГЛАВА 13 / 30</div><h1>Генераторы списков и lambda</h1>
+<h2>Сначала обычный цикл</h2>
+<pre><code>squares = []
+for number in range(1, 6):
+    squares.append(number ** 2)
+print(squares)</code></pre>
+<p>Теперь тот же смысл короче:</p>
+<pre><code>squares = [number ** 2 for number in range(1, 6)]
+print(squares)</code></pre>
+<p>Такая конструкция называется list comprehension, или списковое включение. В обиходе — генератор списка. Читай: «возьми квадрат number для каждого number из диапазона».</p>
+<h2>Фильтрация и выбор</h2>
+<pre><code>evens = [n for n in range(10) if n % 2 == 0]
+labels = [&quot;чётное&quot; if n % 2 == 0 else &quot;нечётное&quot; for n in range(4)]
+print(evens)
+print(labels)</code></pre>
+<p>if после for отбирает элементы. Выражение if ... else перед for выбирает значение для каждого элемента и ничего не отбрасывает.</p>
+<h2>Вложенные последовательности</h2>
+<pre><code>rows = [[1, 2], [3, 4], [5, 6]]
+flat = [value for row in rows for value in row]
+matrix = [[0 for column in range(3)] for row in range(2)]
+matrix[0][0] = 9
+print(flat)
+print(matrix)</code></pre>
+<p>Порядок for такой же, как во вложенных циклах. Слишком длинную конструкцию лучше заменить обычными циклами. Понятность важнее краткости.</p>
+<h2>Словари, множества и генераторные выражения</h2>
+<pre><code>lengths = {word: len(word) for word in [&quot;кот&quot;, &quot;собака&quot;]}
+unique_lengths = {len(word) for word in [&quot;кот&quot;, &quot;дом&quot;, &quot;собака&quot;]}
+total = sum(n * n for n in range(100))
+print(lengths, sorted(unique_lengths), total)</code></pre>
+<p>Круглые скобки создают генераторное выражение: элементы вычисляются по мере запроса, весь список сразу не хранится. Генератор обычно можно перебрать только один раз.</p>
+<h2>lambda — короткая функция</h2>
+<pre><code>double = lambda x: x * 2
+print(double(5))
+people = [(&quot;Аня&quot;, 25), (&quot;Илья&quot;, 19)]
+print(sorted(people, key=lambda person: person[1]))</code></pre>
+<p>lambda принимает параметры и возвращает одно выражение. Для именованной функции с понятным назначением чаще лучше def. lambda полезна как короткое правило сортировки или обработки.</p>
+<h2>Практика</h2>
+<p class="item">1. Отфильтруй из списка только отрицательные числа.</p>
+<p class="item">2. Преобразуй двумерный список в одномерный.</p>
+<p class="item">3. Создай список кортежей (число, квадрат, куб) для чисел от 0 до 10.</p>
+<p class="item">4. Отсортируй слова по длине с key=len, затем людей по возрасту с lambda.</p><h2>Задания с подсказками</h2><h3>Квадраты</h3><p>Создай через списковое включение квадраты чисел от 1 до 5 и выведи список.</p><pre>numbers = range(1, 6)
+</pre><details><summary>Подсказка</summary><p>Формат: [выражение for элемент in последовательность].</p></details><details><summary>Решение</summary><pre>numbers = range(1, 6)
+print([n ** 2 for n in numbers])
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-14"><div class="chapter-number">ГЛАВА 14 / 30</div><h1>Функции, которые работают с функциями</h1>
+<h2>Функция тоже значение</h2>
+<p>Функцию можно сохранить в переменную, передать другой функции и вернуть как результат. Функцию, которая принимает или возвращает функции, называют функцией высшего порядка.</p>
+<pre><code>def double(x):
+    return x * 2
+
+def apply(function, value):
+    return function(value)
+
+operation = double
+print(apply(operation, 5))</code></pre>
+<p>double без скобок — сама функция. double(5) — её вызов и результат. Это различие важно для сортировки, обработчиков кнопок и других событий.</p>
+<h2>map, filter, reduce</h2>
+<pre><code>from functools import reduce
+numbers = [1, 2, 3, 4]
+print(list(map(lambda x: x * 2, numbers)))
+print(list(filter(lambda x: x % 2 == 0, numbers)))
+print(reduce(lambda total, x: total + x, numbers, 0))</code></pre>
+<p>map преобразует каждый элемент. filter оставляет те, для которых правило истинно. reduce сворачивает последовательность в один результат, постепенно объединяя накопленное значение с очередным элементом. Здесь sum(numbers) был бы проще. map и filter возвращают итераторы, поэтому для печати всего результата мы превращаем их в list.</p>
+<h2>Замыкание</h2>
+<pre><code>def make_multiplier(factor):
+    def multiply(value):
+        return value * factor
+    return multiply
+
+triple = make_multiplier(3)
+print(triple(7))</code></pre>
+<p>Внутренняя функция помнит factor из окружения, в котором была создана. Это называется замыканием. Не нужно заучивать определение: проследи, откуда берётся число 3.</p>
+<h2>Декоратор</h2>
+<p>Декоратор оборачивает функцию дополнительным поведением: например, пишет сообщение перед вызовом.</p>
+<pre><code>from functools import wraps
+
+def announce(function):
+    @wraps(function)
+    def wrapper(*args, **kwargs):
+        print(&quot;Начинаю&quot;)
+        return function(*args, **kwargs)
+    return wrapper
+
+@announce
+def greet(name):
+    return f&quot;Привет, {name}&quot;
+
+print(greet(&quot;Аня&quot;))</code></pre>
+<p>@announce примерно равнозначно greet = announce(greet). *args и **kwargs передают произвольные аргументы дальше. wraps сохраняет имя и документацию исходной функции. Несколько декораторов применяются снизу вверх.</p>
+<h2>Практика</h2>
+<p class="item">1. Преврати список строк с числами в числа через map(int, ...).</p>
+<p class="item">2. Отбери города, названия которых длиннее пяти букв.</p>
+<p class="item">3. Найди сумму списка обычным циклом, sum и reduce.</p>
+<p class="item">4. Напиши функцию, возвращающую функцию прибавления заданного числа.</p>
+<p class="item">5. Добавь декоратор, печатающий «Готово» после успешного вызова функции.</p><h2>Задания с подсказками</h2><h3>Фильтр</h3><p>Через filter и lambda оставь только положительные числа. Выведи результат как list.</p><pre>numbers = [-2, 0, 3, -1, 5]
+</pre><details><summary>Подсказка</summary><p>filter принимает функцию-проверку, затем коллекцию.</p></details><details><summary>Решение</summary><pre>numbers = [-2, 0, 3, -1, 5]
+print(list(filter(lambda x: x &gt; 0, numbers)))
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-15"><div class="chapter-number">ГЛАВА 15 / 30</div><h1>Ошибки Python: читаем сообщения без паники</h1>
+<h2>Как читать traceback</h2>
+<p>Если программа остановилась, читай последнюю строку сообщения: там тип ошибки и причина. Выше указаны файл, номер строки и путь вызовов. Найди ближайшую строку своего кода, затем проверь значения переменных перед ней.</p>
+<h2>Частые ошибки</h2>
+<p class="item">- SyntaxError — Python не смог разобрать запись: пропущены скобка, кавычка или двоеточие.</p>
+<p class="item">- IndentationError — неверные отступы.</p>
+<p class="item">- NameError — имя ещё не определено или написано с ошибкой.</p>
+<p class="item">- IndexError — нет такого индекса в последовательности.</p>
+<p class="item">- KeyError — нет такого ключа в словаре.</p>
+<p class="item">- TypeError — действие не подходит к типу или переданы неверные аргументы.</p>
+<p class="item">- ValueError — тип подходящий, но значение недопустимо.</p>
+<p class="item">- AttributeError — у объекта нет такого метода или свойства.</p>
+<p class="item">- ModuleNotFoundError — не найден импортируемый модуль.</p>
+<p class="item">- ImportError — модуль найден, но нужный объект импортировать не удалось.</p>
+<p class="item">- ZeroDivisionError — деление на ноль.</p>
+<p class="item">- FileNotFoundError — не найден файл по указанному пути.</p>
+<h2>Отличаем тип от значения</h2>
+<pre><code>age = &quot;25&quot;
+print(int(age) + 1)</code></pre>
+<p>&quot;25&quot; + 1 вызвало бы TypeError: нельзя сложить строку и число. int(&quot;кот&quot;) вызвало бы ValueError: строка есть, но число в ней не записано. int(&quot;25&quot;) работает.</p>
+<h2>Пошаговая диагностика</h2>
+<pre><code>prices = [50, 120]
+index = 1
+print(&quot;Список:&quot;, prices)
+print(&quot;Индекс:&quot;, index, &quot;Длина:&quot;, len(prices))
+print(prices[index])</code></pre>
+<p>Если index был бы 2, произошло бы обращение к третьему элементу, которого нет. Последний допустимый положительный индекс равен len(prices) - 1.</p>
+<h2>Отладка — проверка гипотез</h2>
+<p class="item">1. Прочитай точное сообщение.</p>
+<p class="item">2. Найди строку.</p>
+<p class="item">3. Выведи важные значения через print и type.</p>
+<p class="item">4. Уменьши пример до нескольких строк.</p>
+<p class="item">5. Исправь одну причину и запусти снова.</p>
+<h2>Не все ошибки приводят к остановке</h2>
+<pre><code>width = 5
+height = 3
+area = width * height
+assert area == 15
+print(area)</code></pre>
+<p>Если случайно написать width + height, программа выполнится, но ответ будет неверным. Это логическая ошибка. assert помогает проверить ожидания при разработке; для проверки пользовательского ввода используй обычные if, потому что assert можно отключить.</p>
+<h2>Практика</h2>
+<p class="item">1. По очереди намеренно вызови NameError, IndexError, KeyError и ZeroDivisionError. Каждый пример запускай отдельно.</p>
+<p class="item">2. Исправь сложение &quot;5&quot; + 2 так, чтобы получить число 7.</p>
+<p class="item">3. Найди ошибку в формуле площади прямоугольника width + height.</p>
+<p class="item">4. Запиши в заметки три ошибки, которые встретились тебе, и способ исправления.</p><h2>Задания с подсказками</h2><h3>Исправь тип</h3><p>Исправь TypeError: нужно получить число 7, а не строку 52.</p><pre>value = &quot;5&quot;
+print(value + 2)
+</pre><details><summary>Подсказка</summary><p>Преврати value в целое число до сложения.</p></details><details><summary>Решение</summary><pre>value = &quot;5&quot;
+print(int(value) + 2)
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-16"><div class="chapter-number">ГЛАВА 16 / 30</div><h1>Даты и время</h1>
+<h2>Дата, время и момент</h2>
+<p>datetime — модуль стандартной библиотеки. date хранит дату, time — время суток, datetime — дату и время вместе, timedelta — длительность.</p>
+<pre><code>from datetime import date, datetime, timedelta, timezone
+today = date.today()
+now = datetime.now(timezone.utc)
+print(today)
+print(now.year, now.month, now.day)
+print(now.hour, now.minute, now.second)
+print(today + timedelta(days=7))</code></pre>
+<p>Дата зависит от часового пояса. timezone.utc создаёт явно указанный UTC. datetime.now() без аргумента вернёт местное время без информации о часовом поясе.</p>
+<h2>Создание и разница</h2>
+<pre><code>from datetime import date
+start = date(2026, 1, 1)
+finish = date(2026, 1, 10)
+distance = finish - start
+print(distance.days)  # 9</code></pre>
+<p>Порядок аргументов date: год, месяц, день. Недопустимая дата, например 30 февраля, вызовет ValueError. Разность двух дат — timedelta. Для длительности в секундах используй total_seconds(), а не seconds: seconds не включает целые дни.</p>
+<h2>Форматирование и разбор</h2>
+<pre><code>from datetime import datetime
+moment = datetime(2026, 10, 29, 18, 30)
+print(moment.strftime(&quot;%d.%m.%Y %H:%M&quot;))
+parsed = datetime.strptime(&quot;29.10.2026&quot;, &quot;%d.%m.%Y&quot;)
+print(parsed.date())
+print(moment.isoformat())</code></pre>
+<p>strftime превращает дату в текст, strptime разбирает текст по шаблону. %Y — четырёхзначный год, %m — месяц, %d — день, %H — часы, %M — минуты, %S — секунды. %A и %B дают названия дня недели и месяца и зависят от локали системы.</p>
+<h2>Временные метки</h2>
+<pre><code>from datetime import datetime, timezone
+moment = datetime(2026, 1, 1, tzinfo=timezone.utc)
+stamp = moment.timestamp()
+print(stamp)
+print(datetime.fromtimestamp(stamp, timezone.utc))</code></pre>
+<p>Timestamp — число секунд от начала эпохи Unix. Для замера скорости кода лучше time.perf_counter, а не календарное время: системные часы могут корректироваться.</p>
+<h2>Практика</h2>
+<p class="item">1. Выведи текущие год, месяц и день отдельно.</p>
+<p class="item">2. Разбери строку &quot;01.12.2026&quot; и выведи дату в формате YYYY-MM-DD.</p>
+<p class="item">3. Посчитай число дней между двумя заданными датами.</p>
+<p class="item">4. Прибавь к моменту 2 дня и 3 часа. Проверь полную длительность через total_seconds.</p><h2>Задания с подсказками</h2><h3>Дни между датами</h3><p>Выведи число дней между 1 и 10 января 2026 года.</p><pre>from datetime import date
+start = date(2026, 1, 1)
+finish = date(2026, 1, 10)
+</pre><details><summary>Подсказка</summary><p>Разность дат — timedelta, у него есть .days.</p></details><details><summary>Решение</summary><pre>from datetime import date
+start = date(2026, 1, 1)
+finish = date(2026, 1, 10)
+print((finish - start).days)
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-17"><div class="chapter-number">ГЛАВА 17 / 30</div><h1>Обработка исключений и распаковка</h1>
+<h2>Когда ошибку можно обработать</h2>
+<p>Пользователь может ввести текст вместо числа, файл может отсутствовать. Это ожидаемые ситуации, которые программа должна объяснить. try запускает код, except обрабатывает конкретную ошибку.</p>
+<pre><code>text = &quot;не число&quot;
+try:
+    number = int(text)
+except ValueError:
+    print(&quot;Введите целое число&quot;)
+else:
+    print(number * 2)
+finally:
+    print(&quot;Попытка закончена&quot;)</code></pre>
+<p>else выполняется, если блок try завершился без исключения. finally выполняется при выходе из try независимо от успеха; это место для освобождения ресурсов. Для файлов проще и надёжнее with, который изучим в главе 19.</p>
+<h2>Лови то, что понимаешь</h2>
+<pre><code>try:
+    result = 10 / 0
+except ZeroDivisionError as error:
+    print(&quot;На ноль делить нельзя:&quot;, error)</code></pre>
+<p>Не оборачивай всю программу в except: pass. Так можно скрыть собственную ошибку. В except (ValueError, TypeError): можно перечислить несколько ожидаемых исключений. Размещай в try небольшой участок, чтобы было ясно, какое действие обрабатывается.</p>
+<h2>Поднимаем исключение сами</h2>
+<pre><code>def average(numbers):
+    if not numbers:
+        raise ValueError(&quot;Нужен хотя бы один элемент&quot;)
+    return sum(numbers) / len(numbers)
+
+print(average([4, 6]))</code></pre>
+<p>raise сообщает вызывающему коду, что операция невозможна. Часто понятнее явно отказать, чем вернуть неожиданное значение вроде 0, которое можно принять за настоящий результат.</p>
+<h2>Распаковка коллекций</h2>
+<pre><code>first, second, *rest = [1, 2, 3, 4]
+print(first, second, rest)
+numbers = [3, 1, 5]
+print(max(*numbers))
+a = [1, 2]
+b = [3, 4]
+print([*a, *b])
+print({**{&quot;name&quot;: &quot;Аня&quot;}, **{&quot;age&quot;: 25}})</code></pre>
+<p>Звёздочка в присваивании собирает остаток, в вызове распаковывает аргументы. При объединении словарей более позднее значение одинакового ключа заменяет раннее.</p>
+<h2>enumerate и zip</h2>
+<pre><code>names = [&quot;Аня&quot;, &quot;Илья&quot;]
+ages = [25, 19]
+for number, (name, age) in enumerate(zip(names, ages), start=1):
+    print(number, name, age)</code></pre>
+<p>zip объединяет элементы по позиции и обычно заканчивается на самой короткой коллекции. Если длины обязаны совпадать, в Python 3.10+ можно использовать zip(..., strict=True): несовпадение вызовет ValueError.</p>
+<h2>Практика</h2>
+<p class="item">1. Обработай ввод &quot;abc&quot; вместо возраста и покажи понятное сообщение.</p>
+<p class="item">2. Напиши функцию деления с обработкой нулевого делителя.</p>
+<p class="item">3. Соедини имена и оценки через zip.</p>
+<p class="item">4. Создай функцию, которая отклоняет отрицательный возраст через ValueError.</p><h2>Задания с подсказками</h2><h3>Обработай ошибку</h3><p>Попробуй преобразовать text в int. При ValueError выведи Не число.</p><pre>text = &quot;кот&quot;
+</pre><details><summary>Подсказка</summary><p>Помести int(text) в try, сообщение — в except ValueError.</p></details><details><summary>Решение</summary><pre>text = &quot;кот&quot;
+try:
+    print(int(text))
+except ValueError:
+    print(&quot;Не число&quot;)
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-18"><div class="chapter-number">ГЛАВА 18 / 30</div><h1>Регулярные выражения: ищем текст по шаблону</h1>
+<h2>Когда они нужны</h2>
+<p>Если нужен поиск буквального слова, достаточно in, find или replace. Регулярные выражения полезны, когда ищем структуру: последовательность цифр, повторение, несколько вариантов написания.</p>
+<pre><code>import re
+text = &quot;Заказ 15: 3 книги за 1200 рублей&quot;
+print(re.findall(r&quot;\d+&quot;, text))</code></pre>
+<p>r перед кавычками создаёт сырую строку: обратные косые черты передаются регулярному выражению без дополнительного экранирования Python.</p>
+<h2>Основные операции</h2>
+<pre><code>import re
+text = &quot;Python и python&quot;
+found = re.search(r&quot;python&quot;, text, flags=re.IGNORECASE)
+if found:
+    print(found.group(), found.span())
+print(re.match(r&quot;Python&quot;, text).group())
+print(re.fullmatch(r&quot;\d+&quot;, &quot;123&quot;) is not None)
+print(re.findall(r&quot;python&quot;, text, flags=re.I))
+print(re.sub(r&quot;python&quot;, &quot;Пайтон&quot;, text, flags=re.I))
+print(re.split(r&quot;[,;]\s*&quot;, &quot;чай, кофе; вода&quot;))</code></pre>
+<p>search ищет в любом месте. match — только в начале. fullmatch требует совпадения всей строки. Если совпадения нет, результат — None: нельзя сразу вызывать group без проверки. findall возвращает все совпадения, sub заменяет, split разбивает.</p>
+<h2>Словарь знаков</h2>
+<p class="item">- . — любой символ, обычно кроме перевода строки.</p>
+<p class="item">- \d — цифра, \w — буква, цифра или подчёркивание, \s — пробельный символ.</p>
+<p class="item">- \D, \W и \S — противоположные классы.</p>
+<p class="item">- [abc] — один из перечисленных символов, [a-z] — диапазон.</p>
+<p class="item">- [^0-9] — любой символ, кроме указанных.</p>
+<p class="item">- * — ноль или больше повторов, + — один или больше, ? — ноль или один.</p>
+<p class="item">- {3} — ровно три повтора, {2,4} — от двух до четырёх.</p>
+<p class="item">- ^ — начало строки, $ — конец; | — выбор варианта.</p>
+<p class="item">- (...) — группа; \. — буквальная точка.</p>
+<h2>Группы и жадность</h2>
+<pre><code>import re
+match = re.fullmatch(r&quot;(\d{2})\.(\d{2})\.(\d{4})&quot;, &quot;29.10.2026&quot;)
+if match:
+    day, month, year = match.groups()
+    print(year, month, day)
+print(re.findall(r&quot;&lt;.*?&gt;&quot;, &quot;&lt;b&gt;текст&lt;/b&gt;&quot;))</code></pre>
+<p>* и + по умолчанию жадные: берут как можно больше. Добавление ? делает их нежадными. Шаблон даты проверяет форму, но не существование даты: 99.99.2026 тоже совпадёт. Проверять саму дату нужно через datetime.</p>
+<h2>Практика</h2>
+<p class="item">1. Из предложения достань все целые числа.</p>
+<p class="item">2. Замени несколько подряд идущих пробелов одним пробелом через re.sub.</p>
+<p class="item">3. Проверь код из ровно шести цифр через fullmatch.</p>
+<p class="item">4. Найди варианты Python и python без учёта регистра.</p>
+<p class="item">5. Не используй регулярное выражение как полноценный парсер HTML: для HTML есть отдельные библиотеки.</p><h2>Задания с подсказками</h2><h3>Найди числа</h3><p>Через re.findall достань все группы цифр из text и выведи список строк.</p><pre>import re
+text = &quot;Заказ 15: 3 книги&quot;
+</pre><details><summary>Подсказка</summary><p>Шаблон r&quot;\d+&quot; означает одну или несколько цифр.</p></details><details><summary>Решение</summary><pre>import re
+text = &quot;Заказ 15: 3 книги&quot;
+print(re.findall(r&quot;\d+&quot;, text))
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-19"><div class="chapter-number">ГЛАВА 19 / 30</div><h1>Файлы, JSON и CSV</h1>
+<h2>Где живёт файл</h2>
+<p>Относительный путь считается от текущей рабочей папки. В этой программе это отдельная папка практики: её можно открыть из меню «Данные». Файлы упражнения остаются там после запуска. Чтобы примеры не зависели от внешних данных, сначала создавай небольшой файл сам.</p>
+<h2>Чтение и запись текста</h2>
+<pre><code>from pathlib import Path
+path = Path(&quot;notes.txt&quot;)
+with path.open(&quot;w&quot;, encoding=&quot;utf-8&quot;) as file:
+    file.write(&quot;Первая строка\nВторая строка\n&quot;)
+with path.open(&quot;r&quot;, encoding=&quot;utf-8&quot;) as file:
+    print(file.read())</code></pre>
+<p>with закрывает файл даже при ошибке. encoding=&quot;utf-8&quot; нужен для предсказуемого хранения кириллицы. Режим w перезаписывает существующий файл целиком. a дописывает в конец, r читает, x создаёт только новый файл. b означает двоичный режим, например для картинок.</p>
+<h2>Читаем по строкам</h2>
+<pre><code>from pathlib import Path
+path = Path(&quot;lines.txt&quot;)
+path.write_text(&quot;чай\nхлеб\n&quot;, encoding=&quot;utf-8&quot;)
+with path.open(encoding=&quot;utf-8&quot;) as file:
+    for line in file:
+        print(line.rstrip(&quot;\n&quot;))</code></pre>
+<p>read читает всё содержимое, readline — одну строку, readlines — список строк. Перебор файла удобен для больших текстов. strip удаляет пробелы с обоих краёв и может убрать значимые пробелы; rstrip(&quot;\n&quot;) удаляет только переводы строк.</p>
+<h2>JSON: обмен структурированными данными</h2>
+<pre><code>import json
+from pathlib import Path
+person = {&quot;name&quot;: &quot;Аня&quot;, &quot;age&quot;: 25, &quot;student&quot;: True}
+text = json.dumps(person, ensure_ascii=False, indent=2)
+Path(&quot;person.json&quot;).write_text(text, encoding=&quot;utf-8&quot;)
+loaded = json.loads(Path(&quot;person.json&quot;).read_text(encoding=&quot;utf-8&quot;))
+print(loaded[&quot;name&quot;])</code></pre>
+<p>dumps переводит объект в JSON-строку, loads делает обратное. dump и load работают с открытым файлом. В JSON двойные кавычки, true, false и null; после разбора они становятся Python True, False и None. Не используй eval для чтения данных.</p>
+<h2>CSV: строки таблицы</h2>
+<pre><code>import csv
+with open(&quot;people.csv&quot;, &quot;w&quot;, encoding=&quot;utf-8&quot;, newline=&quot;&quot;) as file:
+    writer = csv.writer(file)
+    writer.writerow([&quot;name&quot;, &quot;age&quot;])
+    writer.writerows([[&quot;Аня&quot;, 25], [&quot;Илья&quot;, 19]])
+with open(&quot;people.csv&quot;, encoding=&quot;utf-8&quot;, newline=&quot;&quot;) as file:
+    for row in csv.DictReader(file):
+        print(row[&quot;name&quot;], int(row[&quot;age&quot;]))</code></pre>
+<p>CSV хранит текст: числа при чтении нужно преобразовывать. Модуль csv корректно обрабатывает запятые и кавычки внутри полей; обычный split(&quot;,&quot;) этого не умеет. Для таблиц Excel формата xlsx понадобятся дополнительные библиотеки, например openpyxl.</p>
+<h2>Удаление</h2>
+<p>Path(&quot;name.txt&quot;).unlink() удаляет файл. Сначала проверь точный путь и существование через exists. Для учебных заданий удаляй только собственные временные файлы в папке практики.</p>
+<h2>Практика</h2>
+<p class="item">1. Запиши три цели обучения в текстовый файл и прочитай их.</p>
+<p class="item">2. Посчитай число строк и слов в созданном тексте.</p>
+<p class="item">3. Сохрани список покупок в JSON и восстанови его.</p>
+<p class="item">4. Создай CSV с расходами и посчитай их сумму.</p><h2>Задания с подсказками</h2><h3>Круговой путь JSON</h3><p>Сериализуй person в JSON, разбери обратно и выведи имя. Работай в памяти, файл не обязателен.</p><pre>import json
+person = {&quot;name&quot;: &quot;Аня&quot;, &quot;age&quot;: 25}
+</pre><details><summary>Подсказка</summary><p>dumps делает строку, loads восстанавливает объект.</p></details><details><summary>Решение</summary><pre>import json
+person = {&quot;name&quot;: &quot;Аня&quot;, &quot;age&quot;: 25}
+text = json.dumps(person, ensure_ascii=False)
+loaded = json.loads(text)
+print(loaded[&quot;name&quot;])
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-20"><div class="chapter-number">ГЛАВА 20 / 30</div><h1>Пакеты и pip</h1>
+<h2>Стандартная библиотека и внешние пакеты</h2>
+<p>math, json и pathlib уже входят в Python. pandas, requests, Flask и BeautifulSoup нужно установить отдельно. pip — менеджер пакетов, который скачивает и устанавливает такие библиотеки. Название при установке может отличаться от имени при import: beautifulsoup4 устанавливается, bs4 импортируется.</p>
+<h2>Сначала виртуальное окружение</h2>
+<p>Хотя в исходном курсе окружения обсуждаются в главе 23, пользоваться ими стоит уже сейчас. Все команды этого раздела выполняются в терминале, а не в редакторе Python. Установка требует интернета.</p>
+<pre><code>python -m venv .venv</code></pre>
+<p>На Windows после этого:</p>
+<pre><code>.venv\Scripts\python -m pip install requests</code></pre>
+<p>На macOS и Linux:</p>
+<pre><code>.venv/bin/python -m pip install requests</code></pre>
+<p>На macOS/Linux первую команду обычно запускают через python3. Такой способ не требует активации: мы явно выбираем Python нужного окружения. Чтобы книга использовала установленные пакеты, запусти app.py именно этим интерпретатором.</p>
+<h2>Полезные команды pip</h2>
+<pre><code>python -m pip --version
+python -m pip list
+python -m pip show requests
+python -m pip install requests
+python -m pip uninstall requests
+python -m pip freeze &gt; requirements.txt
+python -m pip install -r requirements.txt</code></pre>
+<p>Здесь python должен означать выбранный интерпретатор окружения; можно заменить его полным путём выше. freeze фиксирует установленные версии. Для нового проекта лучше устанавливать только нужное, а не копировать все пакеты из чужой системы. Обновление выполняется с --upgrade.</p>
+<h2>HTTP-запрос с requests</h2>
+<p>Пример требует requests и доступа к сети. Сеть здесь используется только при явном запуске этого примера.</p>
+<pre><code>import requests
+try:
+    response = requests.get(&quot;https://httpbin.org/json&quot;, timeout=5)
+    response.raise_for_status()
+    data = response.json()
+    print(data)
+except requests.RequestException as error:
+    print(&quot;Запрос не удался:&quot;, error)</code></pre>
+<p>status_code показывает статус, text — текст ответа, json() разбирает JSON. raise_for_status сообщает об HTTP-ошибках. timeout ограничивает ожидание; без него программа может ждать слишком долго.</p>
+<h2>Свой пакет</h2>
+<p>Папка mypackage с __init__.py и модулями внутри может служить пакетом. Например, mypackage/arithmetic.py содержит add, а from mypackage.arithmetic import add импортирует функцию. Публикация собственного пакета — отдельная тема, для первых упражнений не нужна.</p>
+<h2>Практика</h2>
+<p class="item">1. Узнай версию pip и путь выбранного Python.</p>
+<p class="item">2. Создай окружение и установи requests.</p>
+<p class="item">3. Сохрани список зависимостей в requirements.txt.</p>
+<p class="item">4. Создай чистое второе окружение и установи зависимости из файла.</p>
+<p class="item">5. Учебное задание во вкладке практики работает без внешних пакетов; оно не проверяет установку pip автоматически.</p><h2>Задания с подсказками</h2><h3>Стандартный модуль</h3><p>Без установки пакетов импортируй statistics и выведи mean([2, 4, 6]). Это разминка; установку pip выполняй в терминале по уроку.</p><pre># Используй стандартную библиотеку
+</pre><details><summary>Подсказка</summary><p>statistics входит в Python, mean вычисляет среднее.</p></details><details><summary>Решение</summary><pre>import statistics
+print(statistics.mean([2, 4, 6]))
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-21"><div class="chapter-number">ГЛАВА 21 / 30</div><h1>Классы и объекты</h1>
+<h2>Класс — описание, объект — конкретный экземпляр</h2>
+<p>Представь анкету: у каждого человека есть имя и возраст. Класс описывает, какие данные и действия связаны с человеком. Объект хранит данные одного конкретного человека.</p>
+<pre><code>class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def introduce(self):
+        return f&quot;Меня зовут {self.name}, мне {self.age}&quot;
+
+anna = Person(&quot;Аня&quot;, 25)
+ilya = Person(&quot;Илья&quot;, 19)
+print(anna.introduce())
+print(ilya.name)</code></pre>
+<p>__init__ инициализирует новый экземпляр. self — ссылка на тот объект, с которым сейчас работает метод. При anna.introduce() Python передаёт anna как self автоматически. Атрибуты self.name и self.age принадлежат конкретному объекту.</p>
+<h2>Значения по умолчанию и изменение состояния</h2>
+<pre><code>class Student:
+    def __init__(self, name, course=&quot;Python&quot;):
+        self.name = name
+        self.course = course
+        self.skills = []
+
+    def add_skill(self, skill):
+        if skill not in self.skills:
+            self.skills.append(skill)
+
+student = Student(&quot;Аня&quot;)
+student.add_skill(&quot;Циклы&quot;)
+print(student.skills)</code></pre>
+<p>Список создаётся внутри __init__, поэтому у каждого студента свой список. Если написать skills = [] прямо в теле класса, список станет общим атрибутом класса, что часто приводит к неожиданным изменениям.</p>
+<h2>Наследование</h2>
+<pre><code>class Person:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        return f&quot;Привет, я {self.name}&quot;
+
+class Student(Person):
+    def __init__(self, name, course):
+        super().__init__(name)
+        self.course = course
+
+    def greet(self):
+        return f&quot;{super().greet()}, изучаю {self.course}&quot;
+
+student = Student(&quot;Аня&quot;, &quot;Python&quot;)
+print(student.greet())
+print(isinstance(student, Person))</code></pre>
+<p>Student наследует поведение Person и может переопределять методы. super обращается к реализации базового класса по порядку разрешения методов. Наследование полезно для отношения «является разновидностью». Если объект просто использует другой объект, часто проще хранить его как атрибут.</p>
+<h2>Специальные методы</h2>
+<p>__str__ задаёт понятное человеку текстовое представление объекта. __repr__ — представление для отладки. Не нужно писать класс для каждой маленькой задачи: функции и словари часто достаточно понятны.</p>
+<h2>Практика</h2>
+<p class="item">1. Создай класс Dog с именем и методом bark.</p>
+<p class="item">2. Создай BankAccount с балансом, внесением и снятием. Не разрешай отрицательные суммы и снятие больше баланса.</p>
+<p class="item">3. Создай класс Statistics, который хранит список чисел и умеет находить среднее, минимум и максимум.</p>
+<p class="item">4. Проверь, что два экземпляра не разделяют изменяемый список случайно.</p><h2>Задания с подсказками</h2><h3>Первый класс</h3><p>Определи класс Dog: __init__ принимает name, метод bark возвращает строку Гав, я Рекс! для имени Рекс.</p><pre># Определи Dog перед вызовом
+
+print(Dog(&quot;Рекс&quot;).bark())
+</pre><details><summary>Подсказка</summary><p>Сохрани name в self.name. Метод bark принимает self.</p></details><details><summary>Решение</summary><pre>class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def bark(self):
+        return f&quot;Гав, я {self.name}!&quot;
+
+print(Dog(&quot;Рекс&quot;).bark())
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-22"><div class="chapter-number">ГЛАВА 22 / 30</div><h1>Сбор данных со страниц</h1>
+<h2>Что такое web scraping</h2>
+<p>Это извлечение нужных данных из HTML-страницы. Браузер показывает красивую страницу, а программа обычно получает её исходный HTML. Если сайт строит содержимое через JavaScript, простой HTTP-запрос может не увидеть нужные данные.</p>
+<h2>Начнём без интернета</h2>
+<p>В Python есть встроенный HTMLParser. Он позволяет понять идею, не устанавливая ничего.</p>
+<pre><code>from html.parser import HTMLParser
+
+class HeadingReader(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.inside = False
+        self.parts = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == &quot;h1&quot;:
+            self.inside = True
+
+    def handle_endtag(self, tag):
+        if tag == &quot;h1&quot;:
+            self.inside = False
+
+    def handle_data(self, data):
+        if self.inside:
+            self.parts.append(data)
+
+reader = HeadingReader()
+reader.feed(&quot;&lt;h1&gt;Учим Python&lt;/h1&gt;&lt;p&gt;Начинаем&lt;/p&gt;&quot;)
+print(&quot;&quot;.join(reader.parts))</code></pre>
+<p>Это упрощённый обработчик заголовков, а не универсальный парсер всех случаев вложенной разметки.</p>
+<h2>BeautifulSoup</h2>
+<p>В терминале выбранного окружения установи requests и beautifulsoup4. Затем можно разбирать HTML более удобным способом:</p>
+<pre><code>from bs4 import BeautifulSoup
+html = &#x27;&lt;h1&gt;Книга&lt;/h1&gt;&lt;a href=&quot;/lesson/1&quot;&gt;Первый урок&lt;/a&gt;&#x27;
+soup = BeautifulSoup(html, &quot;html.parser&quot;)
+print(soup.h1.get_text(strip=True))
+for link in soup.find_all(&quot;a&quot;):
+    print(link.get_text(strip=True), link.get(&quot;href&quot;))</code></pre>
+<p>find ищет первый элемент, find_all — все. select(&quot;.class-name&quot;) использует CSS-селекторы. get_text извлекает текст, get(&quot;href&quot;) — атрибут ссылки. Если элемент может отсутствовать, проверь результат перед вызовом методов.</p>
+<h2>Получаем настоящую страницу</h2>
+<pre><code>import requests
+from bs4 import BeautifulSoup
+response = requests.get(&quot;https://example.com&quot;, timeout=5)
+response.raise_for_status()
+soup = BeautifulSoup(response.text, &quot;html.parser&quot;)
+title = soup.find(&quot;h1&quot;)
+print(title.get_text(strip=True) if title else &quot;Заголовка нет&quot;)</code></pre>
+<p>Сначала проверь статус ответа, потом разбирай содержимое. Относительные ссылки вроде /about можно превратить в полные через urllib.parse.urljoin. Для учебного проекта используй страницы, сбор данных с которых разрешён, и не отправляй частые запросы. Если есть готовый API, он обычно надёжнее разбора верстки.</p>
+<h2>Практика</h2>
+<p class="item">1. Создай HTML-строку с тремя ссылками и выведи их адреса.</p>
+<p class="item">2. Извлеки текст всех h2.</p>
+<p class="item">3. Сохрани результат в JSON.</p>
+<p class="item">4. Обработай отсутствие заголовка так, чтобы программа не падала.</p><h2>Задания с подсказками</h2><h3>HTML без сети</h3><p>Извлеки содержимое title встроенным HTMLParser. Допиши handle_data и выведи результат. В этом HTML весь текст — заголовок.</p><pre>from html.parser import HTMLParser
+
+class Reader(HTMLParser):
+    def handle_data(self, data):
+        pass
+
+reader = Reader()
+reader.feed(&quot;&lt;title&gt;Учим Python&lt;/title&gt;&quot;)
+</pre><details><summary>Подсказка</summary><p>HTMLParser вызывает handle_data для текста между тегами. Здесь достаточно print(data).</p></details><details><summary>Решение</summary><pre>from html.parser import HTMLParser
+
+class Reader(HTMLParser):
+    def handle_data(self, data):
+        print(data)
+
+reader = Reader()
+reader.feed(&quot;&lt;title&gt;Учим Python&lt;/title&gt;&quot;)
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-23"><div class="chapter-number">ГЛАВА 23 / 30</div><h1>Виртуальные окружения</h1>
+<h2>Зачем отдельная папка с Python</h2>
+<p>Один проект может требовать одну версию библиотеки, другой — другую. Виртуальное окружение хранит отдельный набор пакетов для проекта. Исходники и документы лежат рядом, но не внутри .venv. Саму папку .venv не коммитят в Git и не пересылают как переносимую установку.</p>
+<h2>Создание</h2>
+<p>Открой терминал в папке проекта и выполни:</p>
+<pre><code>python -m venv .venv</code></pre>
+<p>На macOS/Linux обычно python3 -m venv .venv. На некоторых Linux-системах сначала требуется установить системный пакет python3-venv. Команды терминала не запускаются во вкладке редактора Python.</p>
+<h2>Использование без активации</h2>
+<p>На Windows:</p>
+<pre><code>.venv\Scripts\python -m pip install requests
+.venv\Scripts\python app.py</code></pre>
+<p>На macOS/Linux:</p>
+<pre><code>.venv/bin/python -m pip install requests
+.venv/bin/python app.py</code></pre>
+<p>Это самый явный способ: видно, какой интерпретатор запускается. В этой книге дочерний процесс использует тот же Python, которым запущена книга.</p>
+<h2>Активация как удобное сокращение</h2>
+<p>В Windows cmd:</p>
+<pre><code>.venv\Scripts\activate.bat</code></pre>
+<p>В PowerShell:</p>
+<pre><code>.venv\Scripts\Activate.ps1</code></pre>
+<p>В macOS/Linux:</p>
+<pre><code>source .venv/bin/activate</code></pre>
+<p>После активации команда python ссылается на окружение. deactivate возвращает прежнее состояние. Если PowerShell запрещает запуск скриптов, можно использовать прямой путь к интерпретатору вместо изменения системной политики.</p>
+<h2>Проверка</h2>
+<pre><code>import sys
+print(sys.executable)
+print(sys.prefix != sys.base_prefix)</code></pre>
+<p>True во второй строке обычно означает, что работает виртуальное окружение. Активация лишь меняет поиск команд в текущем терминале; магического глобального переключения Python не происходит.</p>
+<h2>Зависимости проекта</h2>
+<pre><code>python -m pip freeze &gt; requirements.txt
+python -m pip install -r requirements.txt</code></pre>
+<p>Сохраняй requirements.txt вместе с кодом. Для восстановления проекта создают новое окружение и устанавливают зависимости из этого файла. Не называй окружение env.py или именем стандартного модуля.</p>
+<h2>Практика</h2>
+<p class="item">1. Создай окружение для книги.</p>
+<p class="item">2. Установи requests только в него.</p>
+<p class="item">3. Запусти книгу его интерпретатором и проверь sys.executable в редакторе.</p>
+<p class="item">4. Создай requirements.txt и запиши в заметки команды запуска для своей системы.</p><h2>Задания с подсказками</h2><h3>Проверь интерпретатор</h3><p>Импортируй sys и выведи True, если sys.executable — непустая строка. Реальное создание venv сделай по инструкции в терминале.</p><pre># Проверяем, что у работающего Python есть путь
+</pre><details><summary>Подсказка</summary><p>Путь в sys.executable. bool непустой строки равен True.</p></details><details><summary>Решение</summary><pre>import sys
+print(isinstance(sys.executable, str) and bool(sys.executable))
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-24"><div class="chapter-number">ГЛАВА 24 / 30</div><h1>Статистика и NumPy</h1>
+<h2>Что рассказывают числа</h2>
+<p>Среднее — сумма значений, делённая на их количество. Медиана — значение в середине отсортированного набора; при чётном количестве берут среднее двух центральных. Мода — наиболее частое значение. Размах — максимум минус минимум.</p>
+<pre><code>import statistics as stats
+ages = [19, 20, 20, 21, 40]
+print(stats.mean(ages))        # 24
+print(stats.median(ages))      # 20
+print(stats.multimode(ages))   # [20]
+print(max(ages) - min(ages))   # 21</code></pre>
+<p>Возраст 40 заметно сдвигает среднее, но почти не влияет на медиану. Поэтому одно среднее не всегда хорошо описывает группу. На пустом наборе среднее не определено.</p>
+<h2>Разброс</h2>
+<pre><code>import statistics as stats
+values = [2, 4, 4, 4, 5, 5, 7, 9]
+print(stats.pvariance(values))  # дисперсия совокупности
+print(stats.pstdev(values))     # стандартное отклонение: 2
+print(stats.variance(values))   # выборочная дисперсия</code></pre>
+<p>Дисперсия показывает средний квадрат отклонения от среднего. Стандартное отклонение — квадратный корень дисперсии, выраженный в исходных единицах. pvariance делит на N, variance — на N - 1 и требует хотя бы двух значений. Выбирай определение по смыслу данных.</p>
+<h2>NumPy: массивы вместо списков</h2>
+<p>Установи numpy в выбранное окружение через python -m pip install numpy. Следующие блоки требуют этот пакет.</p>
+<pre><code>import numpy as np
+a = np.array([1, 2, 3, 4])
+print(a * 2)         # каждый элемент умножен на 2
+print(a + 10)
+print(a.mean(), a.min(), a.max())
+print(a.shape, a.ndim, a.dtype)
+print(a[a &gt; 2])      # фильтр по булевой маске</code></pre>
+<p>Список [1, 2] * 2 повторяется, массив np.array([1, 2]) * 2 умножается поэлементно. dtype — тип элементов; shape — размеры по осям; ndim — число осей. Массив обычно хранит однотипные данные.</p>
+<h2>Матрицы, формы и оси</h2>
+<pre><code>import numpy as np
+matrix = np.arange(1, 7).reshape(2, 3)
+print(matrix)
+print(matrix[0, 1])
+print(matrix[:, 0])
+print(matrix.sum(axis=0))  # сумма по строкам, по одному итогу на столбец
+print(matrix.sum(axis=1))  # сумма внутри каждой строки
+print(np.zeros((2, 3)))
+print(np.ones((2, 2)))
+print(np.linspace(0, 1, 5))</code></pre>
+<p>reshape меняет форму при сохранении количества элементов. Массив 2×3 содержит 6 элементов, поэтому его нельзя переделать в 2×4. Срезы NumPy часто являются представлениями общих данных: для независимой копии нужен .copy().</p>
+<h2>Вычисления и случайность</h2>
+<pre><code>import numpy as np
+rng = np.random.default_rng(42)
+sample = rng.normal(loc=0, scale=1, size=1000)
+print(round(float(sample.mean()), 2))
+print(round(float(sample.std()), 2))
+print(np.sqrt(np.array([1, 4, 9])))
+left = np.array([[1, 2], [3, 4]])
+right = np.eye(2)
+print(left @ right)</code></pre>
+<p>* для двух массивов означает поэлементное умножение, @ — матричное. Broadcast позволяет, например, прибавить одно число ко всем элементам. Формы должны быть совместимы. np.std по умолчанию использует ddof=0; для выборочного варианта часто нужен ddof=1.</p>
+<h2>График</h2>
+<p>matplotlib — отдельный пакет. В обычном файле график можно сохранить так:</p>
+<pre><code>import matplotlib
+matplotlib.use(&quot;Agg&quot;)
+import matplotlib.pyplot as plt
+plt.plot([1, 2, 3], [2, 4, 6])
+plt.xlabel(&quot;Шаг&quot;)
+plt.ylabel(&quot;Значение&quot;)
+plt.savefig(&quot;chart.png&quot;)
+plt.close()
+print(&quot;Сохранён chart.png в папке практики&quot;)</code></pre>
+<p>Встроенный запуск не показывает отдельные графические окна; открывай сохранённый файл. Гистограмма plt.hist показывает распределение значений, scatter — пары координат. Корреляция не доказывает причинность.</p>
+<h2>Практика</h2>
+<p class="item">1. Найди среднее, медиану, моду и размах пяти собственных чисел.</p>
+<p class="item">2. Добавь большое выбивающееся значение и сравни среднее и медиану.</p>
+<p class="item">3. Создай массив 3×3 и вычисли суммы по столбцам.</p>
+<p class="item">4. Сохрани гистограмму случайных чисел в PNG.</p><h2>Задания с подсказками</h2><h3>Среднее и медиана</h3><p>Через statistics выведи среднее и медиану ages на отдельных строках. NumPy для этого задания не нужен.</p><pre>import statistics
+ages = [19, 20, 20, 21, 40]
+</pre><details><summary>Подсказка</summary><p>mean — среднее, median — медиана.</p></details><details><summary>Решение</summary><pre>import statistics
+ages = [19, 20, 20, 21, 40]
+print(statistics.mean(ages))
+print(statistics.median(ages))
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-25"><div class="chapter-number">ГЛАВА 25 / 30</div><h1>Pandas: таблицы в Python</h1>
+<h2>Series и DataFrame</h2>
+<p>pandas — библиотека анализа табличных данных. Series похожа на столбец с подписями строк. DataFrame — целая таблица. Для примеров нужен пакет pandas: установи его в окружение, которым запускаешь книгу.</p>
+<pre><code>import pandas as pd
+table = pd.DataFrame({
+    &quot;name&quot;: [&quot;Аня&quot;, &quot;Илья&quot;, &quot;Оля&quot;],
+    &quot;age&quot;: [25, 19, 31],
+    &quot;city&quot;: [&quot;Казань&quot;, &quot;Пермь&quot;, &quot;Казань&quot;],
+})
+print(table)
+print(table[&quot;age&quot;])
+print(table.shape)
+print(table.dtypes)</code></pre>
+<p>shape — число строк и столбцов. dtypes — тип каждого столбца. Индекс строки не обязательно совпадает с её позицией.</p>
+<h2>Осмотр данных</h2>
+<pre><code>import pandas as pd
+table = pd.DataFrame({&quot;age&quot;: [25, 19, 31], &quot;score&quot;: [80, 90, 70]})
+print(table.head())
+print(table.tail(2))
+print(table.describe())
+table.info()</code></pre>
+<p>head и tail показывают начало и конец. describe даёт статистики числовых столбцов. info печатает структуру и число непустых значений, а возвращает None.</p>
+<h2>Выбор и фильтрация</h2>
+<pre><code>import pandas as pd
+table = pd.DataFrame({&quot;name&quot;: [&quot;Аня&quot;, &quot;Илья&quot;, &quot;Оля&quot;], &quot;age&quot;: [25, 19, 31]})
+print(table[table[&quot;age&quot;] &gt;= 21])
+print(table.loc[table[&quot;age&quot;] &gt;= 21, [&quot;name&quot;, &quot;age&quot;]])
+print(table.iloc[0, 1])
+table[&quot;next_age&quot;] = table[&quot;age&quot;] + 1
+table.loc[table[&quot;name&quot;] == &quot;Аня&quot;, &quot;age&quot;] = 26
+print(table.sort_values(&quot;age&quot;))</code></pre>
+<p>loc выбирает по меткам и условиям, iloc — по целочисленным позициям. Для изменения части таблицы используй loc, а не цепочку table[условие][столбец]. Несколько условий соединяются через &amp; и |, каждое условие берётся в скобки.</p>
+<h2>Пропуски и преобразования</h2>
+<pre><code>import pandas as pd
+table = pd.DataFrame({&quot;age&quot;: [25, None, 31], &quot;price&quot;: [&quot;10&quot;, &quot;ошибка&quot;, &quot;30&quot;]})
+print(table.isna().sum())
+table[&quot;age&quot;] = table[&quot;age&quot;].fillna(table[&quot;age&quot;].median())
+table[&quot;price&quot;] = pd.to_numeric(table[&quot;price&quot;], errors=&quot;coerce&quot;)
+print(table.dropna(subset=[&quot;price&quot;]))</code></pre>
+<p>Пропуск — не ноль. Решение удалить строку или заполнить значение зависит от задачи. coerce превращает неразбираемые значения в пропуски. astype подходит, когда все значения уже совместимы с нужным типом.</p>
+<h2>Группы и объединение</h2>
+<pre><code>import pandas as pd
+orders = pd.DataFrame({&quot;city&quot;: [&quot;Казань&quot;, &quot;Пермь&quot;, &quot;Казань&quot;], &quot;amount&quot;: [100, 200, 50]})
+print(orders.groupby(&quot;city&quot;)[&quot;amount&quot;].sum())
+print(orders[&quot;city&quot;].value_counts())
+print(pd.concat([orders, orders], ignore_index=True).shape)</code></pre>
+<p>groupby группирует строки по значению и позволяет посчитать итоги. concat склеивает таблицы, merge объединяет по ключам, как соединение таблиц в базе данных. Если ключи повторяются с обеих сторон, merge может резко увеличить количество строк.</p>
+<h2>Файлы</h2>
+<pre><code>import pandas as pd
+table = pd.DataFrame({&quot;name&quot;: [&quot;Аня&quot;, &quot;Илья&quot;], &quot;score&quot;: [80, 90]})
+table.to_csv(&quot;scores.csv&quot;, index=False, encoding=&quot;utf-8&quot;)
+loaded = pd.read_csv(&quot;scores.csv&quot;, encoding=&quot;utf-8&quot;)
+print(loaded)</code></pre>
+<p>index=False не сохраняет служебный индекс как лишний столбец. Для Excel потребуются дополнительные движки, например openpyxl. После чтения настоящего файла сначала проверь типы, пропуски и размер таблицы, затем считай выводы.</p>
+<h2>Практика</h2>
+<p class="item">1. Создай таблицу пяти покупок: название, категория, цена.</p>
+<p class="item">2. Выбери покупки дороже 100 и отсортируй по цене.</p>
+<p class="item">3. Посчитай суммы по категориям.</p>
+<p class="item">4. Сохрани CSV и прочитай его обратно.</p>
+<p class="item">5. Автозадание этой книги использует список словарей без pandas, чтобы оно работало офлайн даже до установки пакета.</p><h2>Задания с подсказками</h2><h3>Таблица без пакетов</h3><p>Посчитай сумму amount в списке словарей orders. Это разминка перед pandas из урока.</p><pre>orders = [{&quot;amount&quot;: 100}, {&quot;amount&quot;: 200}, {&quot;amount&quot;: 50}]
+</pre><details><summary>Подсказка</summary><p>Достань row[&quot;amount&quot;] для каждой строки и сложи.</p></details><details><summary>Решение</summary><pre>orders = [{&quot;amount&quot;: 100}, {&quot;amount&quot;: 200}, {&quot;amount&quot;: 50}]
+print(sum(row[&quot;amount&quot;] for row in orders))
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-26"><div class="chapter-number">ГЛАВА 26 / 30</div><h1>Python для веба</h1>
+<h2>Браузер и сервер</h2>
+<p>Браузер отправляет HTTP-запрос по URL. Сервер выбирает обработчик и возвращает ответ: HTML, JSON, файл или сообщение об ошибке. Python часто используется на сервере. HTML описывает структуру страницы, CSS — внешний вид, JavaScript — поведение в браузере.</p>
+<h2>Flask</h2>
+<p>Flask — небольшой веб-фреймворк. Установи его в окружении через python -m pip install Flask. Следующий пример сохрани как web_app.py и запускай отдельно в терминале: встроенный запуск книги ограничен по времени и не предназначен для постоянного сервера.</p>
+<pre><code>from flask import Flask
+app = Flask(__name__)
+
+@app.get(&quot;/&quot;)
+def home():
+    return &quot;&lt;h1&gt;Привет из Python!&lt;/h1&gt;&quot;
+
+@app.get(&quot;/hello/&lt;name&gt;&quot;)
+def hello(name):
+    from markupsafe import escape
+    return f&quot;Привет, {escape(name)}!&quot;
+
+if __name__ == &quot;__main__&quot;:
+    app.run(host=&quot;127.0.0.1&quot;, port=5000)</code></pre>
+<p>Открой http://127.0.0.1:5000 в браузере. @app.get связывает адрес с функцией. &lt;name&gt; — переменная часть пути. escape превращает специальные символы пользовательского текста в безопасное HTML-представление. Сервер останавливается Ctrl+C в терминале.</p>
+<h2>Шаблоны</h2>
+<p>Рядом с web_app.py создай папку templates и файл home.html внутри неё:</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;ru&quot;&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;title&gt;Моя книга&lt;/title&gt;
+&lt;h1&gt;Привет, {{ name }}!&lt;/h1&gt;
+&lt;ul&gt;{% for topic in topics %}&lt;li&gt;{{ topic }}&lt;/li&gt;{% endfor %}&lt;/ul&gt;
+&lt;/html&gt;</code></pre>
+<p>Обработчик страницы может вернуть render_template(&quot;home.html&quot;, name=&quot;Аня&quot;, topics=[&quot;Списки&quot;, &quot;Функции&quot;]). render_template нужно импортировать из flask. Jinja подставляет переменные и по умолчанию экранирует значения в HTML-шаблонах. Общий каркас страниц можно вынести в базовый шаблон через extends и block.</p>
+<h2>Формы и статические файлы</h2>
+<p>CSS и изображения обычно кладут в static. URL для них строят через url_for(&quot;static&quot;, filename=&quot;style.css&quot;). HTML-форма отправляет данные через GET или POST. В Flask поля доступны через request.args для параметров URL и request.form для полей формы. Проверяй полученные значения перед расчётами и сохранением.</p>
+<h2>Локальная разработка и публикация</h2>
+<p>Локальный сервер доступен только на твоём компьютере, пока выбран 127.0.0.1. Встроенный сервер Flask предназначен для разработки. Инструкции старого курса по Heroku исторические: для настоящей публикации понадобятся актуальный хостинг и подходящий сервер запуска. Для обучения сначала добейся правильной работы локально.</p>
+<h2>Практика</h2>
+<p class="item">1. Запусти локальную страницу с приветствием.</p>
+<p class="item">2. Создай маршрут /about с описанием проекта.</p>
+<p class="item">3. Передай список тем в шаблон и выведи его циклом.</p>
+<p class="item">4. Сделай форму имени и приветствие; не вставляй пользовательский текст в HTML без экранирования.</p><h2>Задания с подсказками</h2><h3>Ответ страницы</h3><p>Напиши функцию home(), возвращающую HTML-строку &lt;h1&gt;Привет!&lt;/h1&gt;. Без Flask: здесь учимся формировать ответ.</p><pre># Определи функцию
+
+print(home())
+</pre><details><summary>Подсказка</summary><p>Обычная функция с return строки. Настоящий сервер запускается отдельно по уроку.</p></details><details><summary>Решение</summary><pre>def home():
+    return &quot;&lt;h1&gt;Привет!&lt;/h1&gt;&quot;
+
+print(home())
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-27"><div class="chapter-number">ГЛАВА 27 / 30</div><h1>MongoDB: храним данные между запусками</h1>
+<h2>База данных вместо временных переменных</h2>
+<p>После завершения программы переменные исчезают. База данных сохраняет записи и помогает искать, обновлять и удалять их. В MongoDB записи называются документами и похожи на словари. Документы объединяются в коллекции, коллекции — в базы данных. Внутренний формат BSON поддерживает больше типов, чем обычный JSON.</p>
+<h2>Сначала модель на обычном списке</h2>
+<pre><code>students = [
+    {&quot;name&quot;: &quot;Аня&quot;, &quot;age&quot;: 25},
+    {&quot;name&quot;: &quot;Илья&quot;, &quot;age&quot;: 19},
+]
+adults = [person for person in students if person[&quot;age&quot;] &gt;= 21]
+print(adults)</code></pre>
+<p>Это не база данных: изменения исчезнут после запуска. Но смысл фильтрации такой же, как у запроса. Чтобы подготовиться к реальной MongoDB, разберись с документами и условиями на этом маленьком примере.</p>
+<h2>Подключение</h2>
+<p>Нужен отдельный сервер MongoDB: локальный или облачный Atlas, а также пакет pymongo. Он не входит в комплект книги. Строка подключения зависит от твоей установки и не должна попадать в публичный код.</p>
+<pre><code>import os
+from pymongo import MongoClient
+client = MongoClient(os.environ[&quot;MONGODB_URI&quot;], serverSelectionTimeoutMS=3000)
+database = client[&quot;python_study&quot;]
+collection = database[&quot;students&quot;]
+print(client.admin.command(&quot;ping&quot;))
+client.close()</code></pre>
+<p>Задай MONGODB_URI в окружении перед запуском отдельного файла. Не вставляй пароль в репозиторий или заметки курса. Для локальной установки строка часто начинается с mongodb://localhost:27017/, но конкретные настройки нужно брать из собственной установки.</p>
+<h2>CRUD: создать, прочитать, обновить, удалить</h2>
+<p>Следующие фрагменты предполагают, что collection уже получена из открытого подключения выше. Они изменяют выбранную коллекцию; используй отдельную учебную базу.</p>
+<pre><code>result = collection.insert_one({&quot;name&quot;: &quot;Аня&quot;, &quot;age&quot;: 25})
+print(result.inserted_id)
+person = collection.find_one({&quot;_id&quot;: result.inserted_id})
+print(person)
+collection.update_one({&quot;_id&quot;: result.inserted_id}, {&quot;$set&quot;: {&quot;age&quot;: 26}})
+collection.delete_one({&quot;_id&quot;: result.inserted_id})</code></pre>
+<p>MongoDB обычно создаёт уникальный _id типа ObjectId. insert_many добавляет несколько документов. update_many и delete_many действуют на все совпадения. Пустой фильтр {} означает все документы: особенно внимательно относись к операциям удаления.</p>
+<h2>Фильтры, поля, сортировка и лимит</h2>
+<pre><code>query = {&quot;age&quot;: {&quot;$gte&quot;: 18, &quot;$lt&quot;: 30}}
+for person in collection.find(query, {&quot;name&quot;: 1, &quot;age&quot;: 1, &quot;_id&quot;: 0}).sort(&quot;age&quot;, 1).limit(5):
+    print(person)</code></pre>
+<p>$gte означает ≥, $gt — &gt;, $lte — ≤, $lt — &lt;, $in — принадлежность набору. Проекция задаёт поля ответа. sort(..., 1) сортирует по возрастанию, -1 — по убыванию. find возвращает курсор, который перебирают. Для часто используемых поисковых полей создают индексы, но они требуют дополнительного места и времени при записи.</p>
+<h2>Практика</h2>
+<p class="item">1. На списке словарей реализуй добавление, поиск по имени и изменение возраста.</p>
+<p class="item">2. При наличии MongoDB повтори действия в отдельной учебной коллекции.</p>
+<p class="item">3. Добавь фильтр по диапазону возраста и сортировку.</p>
+<p class="item">4. До удаления выведи выбранные записи и убедись, что фильтр правильный.</p><h2>Задания с подсказками</h2><h3>Фильтр документов</h3><p>Из списка students выбери имена людей не младше 21 года. Выведи список имён. MongoDB не требуется.</p><pre>students = [{&quot;name&quot;: &quot;Аня&quot;, &quot;age&quot;: 25}, {&quot;name&quot;: &quot;Илья&quot;, &quot;age&quot;: 19}]
+</pre><details><summary>Подсказка</summary><p>Используй списковое включение с условием по age.</p></details><details><summary>Решение</summary><pre>students = [{&quot;name&quot;: &quot;Аня&quot;, &quot;age&quot;: 25}, {&quot;name&quot;: &quot;Илья&quot;, &quot;age&quot;: 19}]
+print([p[&quot;name&quot;] for p in students if p[&quot;age&quot;] &gt;= 21])
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-28"><div class="chapter-number">ГЛАВА 28 / 30</div><h1>API: программы общаются с программами</h1>
+<h2>Что такое API</h2>
+<p>API — договор о способах обращения к программе. HTTP API определяет адреса, методы, формат запросов и ответов. Если сайт — интерфейс для человека, то API часто служит интерфейсом для другой программы.</p>
+<p>Представь сервис книг. GET /books получает список, GET /books/7 — одну книгу, POST /books создаёт новую, PATCH /books/7 меняет часть полей, DELETE /books/7 удаляет запись. PUT обычно заменяет представление ресурса целиком. Это распространённые соглашения, а точные правила задаёт документация конкретного API.</p>
+<h2>Статусы HTTP</h2>
+<p class="item">- 200 OK — запрос выполнен.</p>
+<p class="item">- 201 Created — создан новый ресурс.</p>
+<p class="item">- 204 No Content — успешно, тела ответа нет.</p>
+<p class="item">- 400 Bad Request — запрос некорректен.</p>
+<p class="item">- 401 Unauthorized — нужна действительная аутентификация.</p>
+<p class="item">- 403 Forbidden — доступ запрещён.</p>
+<p class="item">- 404 Not Found — ресурс не найден.</p>
+<p class="item">- 429 Too Many Requests — слишком много запросов.</p>
+<p class="item">- 500 Internal Server Error — ошибка сервера.</p>
+<h2>JSON и проверка данных</h2>
+<pre><code>import json
+response_text = &#x27;{&quot;books&quot;: [{&quot;id&quot;: 1, &quot;title&quot;: &quot;Python&quot;}]}&#x27;
+data = json.loads(response_text)
+for book in data[&quot;books&quot;]:
+    print(book[&quot;id&quot;], book[&quot;title&quot;])</code></pre>
+<p>Успешный HTTP-ответ ещё не гарантирует нужную структуру данных. Проверяй типы и обязательные поля. Не все ответы являются JSON: иногда сервер присылает HTML-страницу ошибки.</p>
+<h2>Запрос из Python</h2>
+<p>При установленном requests и доступе к сети:</p>
+<pre><code>import requests
+response = requests.get(
+    &quot;https://httpbin.org/get&quot;,
+    params={&quot;topic&quot;: &quot;python&quot;, &quot;page&quot;: 1},
+    timeout=5,
+)
+response.raise_for_status()
+data = response.json()
+print(data[&quot;args&quot;])</code></pre>
+<p>params формирует параметры URL. Для POST с JSON используют json={...}. Заголовки передаются через headers={...}. API-ключи берут из переменных окружения, а не вписывают в публичный файл. Для учебного примера httpbin ключ не нужен.</p>
+<h2>Пагинация и ограничения</h2>
+<p>Большие списки обычно возвращают частями: страницами или курсорами. Пока документация не говорит об окончании, нужно запрашивать следующую часть. Не угадывай формат курсора. При 429 учитывай Retry-After. Повторение POST без защиты от дубликатов может создать несколько записей.</p>
+<h2>Практика</h2>
+<p class="item">1. Придумай адреса и методы API для списка задач.</p>
+<p class="item">2. Разбери JSON с книгами и выведи только названия.</p>
+<p class="item">3. Обработай отсутствие ожидаемого поля.</p>
+<p class="item">4. Запиши, чем отличаются 400, 401, 403 и 404.</p><h2>Задания с подсказками</h2><h3>Разбери ответ API</h3><p>Разбери JSON и выведи названия книг на отдельных строках. Сеть не требуется.</p><pre>import json
+text = &#x27;{&quot;books&quot;: [{&quot;title&quot;: &quot;Python&quot;}, {&quot;title&quot;: &quot;Практика&quot;}]}&#x27;
+</pre><details><summary>Подсказка</summary><p>json.loads, затем цикл по значению ключа books.</p></details><details><summary>Решение</summary><pre>import json
+text = &#x27;{&quot;books&quot;: [{&quot;title&quot;: &quot;Python&quot;}, {&quot;title&quot;: &quot;Практика&quot;}]}&#x27;
+for book in json.loads(text)[&quot;books&quot;]:
+    print(book[&quot;title&quot;])
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-29"><div class="chapter-number">ГЛАВА 29 / 30</div><h1>Создаём своё API</h1>
+<h2>Минимальный сервис задач</h2>
+<p>Установи Flask в виртуальное окружение. Сохрани следующий код в отдельный файл api_app.py и запусти в терминале через python api_app.py. В книге длительные серверы автоматически останавливаются, поэтому этот пример запускается отдельно.</p>
+<pre><code>from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+tasks = {}
+next_id = 1
+
+@app.get(&quot;/tasks&quot;)
+def list_tasks():
+    return jsonify(list(tasks.values()))
+
+@app.get(&quot;/tasks/&lt;int:task_id&gt;&quot;)
+def get_task(task_id):
+    task = tasks.get(task_id)
+    if task is None:
+        return jsonify(error=&quot;Задача не найдена&quot;), 404
+    return jsonify(task)
+
+@app.post(&quot;/tasks&quot;)
+def create_task():
+    global next_id
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify(error=&quot;Нужен JSON-объект&quot;), 400
+    title = data.get(&quot;title&quot;)
+    if not isinstance(title, str) or not title.strip():
+        return jsonify(error=&quot;Нужно непустое текстовое title&quot;), 400
+    task = {&quot;id&quot;: next_id, &quot;title&quot;: title.strip(), &quot;done&quot;: False}
+    tasks[next_id] = task
+    next_id += 1
+    return jsonify(task), 201
+
+@app.patch(&quot;/tasks/&lt;int:task_id&gt;&quot;)
+def update_task(task_id):
+    if task_id not in tasks:
+        return jsonify(error=&quot;Задача не найдена&quot;), 404
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict) or not isinstance(data.get(&quot;done&quot;), bool):
+        return jsonify(error=&quot;Нужно логическое поле done&quot;), 400
+    tasks[task_id][&quot;done&quot;] = data[&quot;done&quot;]
+    return jsonify(tasks[task_id])
+
+@app.delete(&quot;/tasks/&lt;int:task_id&gt;&quot;)
+def delete_task(task_id):
+    if task_id not in tasks:
+        return jsonify(error=&quot;Задача не найдена&quot;), 404
+    del tasks[task_id]
+    return &quot;&quot;, 204
+
+if __name__ == &quot;__main__&quot;:
+    app.run(host=&quot;127.0.0.1&quot;, port=5000)</code></pre>
+<p>Пример хранит данные в памяти одного процесса. При перезапуске они исчезнут. Он предназначен для локального изучения, не для общей базы в многопроцессном сервере. Позже tasks можно заменить коллекцией MongoDB или таблицей SQLite.</p>
+<h2>Как проверить</h2>
+<p>Браузер умеет открыть GET http://127.0.0.1:5000/tasks. Для POST и PATCH удобен отдельный клиент на Python:</p>
+<pre><code>import requests
+base = &quot;http://127.0.0.1:5000&quot;
+created = requests.post(base + &quot;/tasks&quot;, json={&quot;title&quot;: &quot;Пройти главу&quot;}, timeout=3)
+created.raise_for_status()
+task = created.json()
+print(task)
+updated = requests.patch(base + f&quot;/tasks/{task[&#x27;id&#x27;]}&quot;, json={&quot;done&quot;: True}, timeout=3)
+print(updated.status_code, updated.json())</code></pre>
+<p>Клиент запускается после старта сервера. Проверяй не только успешный путь: отправь пустое название, число вместо текста, неизвестный id, неверный тип done. Хороший API объясняет ошибку и возвращает соответствующий статус.</p>
+<h2>Следующие шаги</h2>
+<p>Добавь постоянное хранение, разделение обработчиков и данных, проверку входных полей и тесты. Если приложение когда-нибудь выйдет за пределы компьютера, потребуются аутентификация и подходящий сервер размещения. Не включай debug для публичного сервера.</p>
+<h2>Практика</h2>
+<p class="item">1. Запусти API и создай две задачи.</p>
+<p class="item">2. Отметь одну выполненной и удали вторую.</p>
+<p class="item">3. Проверь ответы для отсутствующего id и пустого title.</p>
+<p class="item">4. Добавь фильтр /tasks?done=true. Явно разбери текстовый параметр, потому что bool(&quot;false&quot;) даёт True.</p><h2>Задания с подсказками</h2><h3>Проверка запроса</h3><p>Напиши validate(data), возвращающую 201 при непустом текстовом title, иначе 400. Выведи результаты двух вызовов из заготовки.</p><pre># Определи validate
+
+print(validate({&quot;title&quot;: &quot;Учить Python&quot;}))
+print(validate({&quot;title&quot;: &quot;   &quot;}))
+</pre><details><summary>Подсказка</summary><p>Проверь isinstance(title, str), затем title.strip().</p></details><details><summary>Решение</summary><pre>def validate(data):
+    title = data.get(&quot;title&quot;)
+    if isinstance(title, str) and title.strip():
+        return 201
+    return 400
+
+print(validate({&quot;title&quot;: &quot;Учить Python&quot;}))
+print(validate({&quot;title&quot;: &quot;   &quot;}))
+</pre></details><a href="#top">↑ К оглавлению</a></section><section id="day-30"><div class="chapter-number">ГЛАВА 30 / 30</div><h1>Финальный проект и что делать дальше</h1>
+<h2>Что ты уже знаешь</h2>
+<p>Ты прошёл значения и типы, коллекции, условия, циклы, функции, модули, исключения, файлы и классы. Познакомился с пакетами, таблицами, вебом, базами и API. Знакомство не равно мастерству: уверенность приходит, когда сам собираешь маленькую работающую программу.</p>
+<h2>Проект: личный список задач</h2>
+<p>Сделай консольную программу, которая позволяет добавить задачу, показать список, отметить задачу выполненной и удалить её. Данные должны сохраняться в tasks.json. Библиотек сверх стандартной не нужно.</p>
+<p>Начни с модели данных:</p>
+<pre><code>tasks = [
+    {&quot;id&quot;: 1, &quot;title&quot;: &quot;Повторить функции&quot;, &quot;done&quot;: False},
+    {&quot;id&quot;: 2, &quot;title&quot;: &quot;Решить три задачи&quot;, &quot;done&quot;: True},
+]
+for task in tasks:
+    mark = &quot;✓&quot; if task[&quot;done&quot;] else &quot;○&quot;
+    print(f&quot;{mark} {task[&#x27;id&#x27;]}. {task[&#x27;title&#x27;]}&quot;)</code></pre>
+<p>Затем добавь функции add_task, complete_task, delete_task, load_tasks и save_tasks. Каждая должна заниматься одним понятным действием. Для нового id используй max существующих id плюс 1, а не просто длину списка: после удаления длина может совпасть со старым id.</p>
+<h2>Делай по одному шагу</h2>
+<p class="item">1. Покажи заранее записанный список.</p>
+<p class="item">2. Добавь новую задачу в память.</p>
+<p class="item">3. Реализуй поиск по id и отметку done.</p>
+<p class="item">4. Сохрани в JSON через json и pathlib.</p>
+<p class="item">5. Загрузи из файла при запуске. При отсутствии файла начни с пустого списка; повреждённый файл не перезаписывай молча.</p>
+<p class="item">6. Добавь меню while, которое заканчивается по команде выхода.</p>
+<p class="item">7. Проверь неправильные команды, пустое название и неизвестный id.</p>
+<p>Для интерактивного меню удобнее отдельный терминал: встроенная практика получает заранее подготовленный ввод и ограничивает время выполнения. Сохрани свой код через кнопку «Сохранить .py» и запусти его самостоятельно.</p>
+<h2>Как оценить готовность</h2>
+<p>Программа не теряет данные после перезапуска. После удаления и добавления id не повторяются. Ошибочный ввод не завершает работу неожиданно. Есть README с командой запуска и примером использования. Ты можешь объяснить каждую функцию собственными словами.</p>
+<h2>Куда двигаться</h2>
+<p>Для автоматизации тренируйся с pathlib, csv, json и requests. Для анализа данных — pandas, NumPy и визуализация. Для веба — HTTP, Flask или Django, SQL и тестирование. Выбери одно направление и сделай два маленьких проекта, прежде чем собирать десятки новых библиотек.</p>
+<p>Полезные следующие темы: Git, тесты unittest или pytest, аннотации типов, структура проекта, чтение документации. Не нужно изучать всё одновременно. Возьми конкретную задачу из жизни и доведи её до рабочего состояния.</p>
+<h2>Последняя практика</h2>
+<p>Собери финальный проект и запиши в заметки: что получилось, где пришлось искать помощь, что хочешь улучшить. Пройденные главы всегда можно открыть снова. Главное достижение — программа, которую ты понимаешь и можешь изменить сам.</p><h2>Задания с подсказками</h2><h3>Первый шаг проекта</h3><p>Из списка tasks выведи названия только невыполненных задач, каждое на отдельной строке. Затем собери проект из главы самостоятельно.</p><pre>tasks = [{&quot;title&quot;: &quot;Повторить функции&quot;, &quot;done&quot;: False}, {&quot;title&quot;: &quot;Отдохнуть&quot;, &quot;done&quot;: True}]
+</pre><details><summary>Подсказка</summary><p>Цикл по tasks и условие not task[&quot;done&quot;].</p></details><details><summary>Решение</summary><pre>tasks = [{&quot;title&quot;: &quot;Повторить функции&quot;, &quot;done&quot;: False}, {&quot;title&quot;: &quot;Отдохнуть&quot;, &quot;done&quot;: True}]
+for task in tasks:
+    if not task[&quot;done&quot;]:
+        print(task[&quot;title&quot;])
+</pre></details><a href="#top">↑ К оглавлению</a></section><footer><p>Источник: <a href="https://github.com/Asabeneh/30-Days-Of-Python">Asabeneh / 30 Days Of Python</a>. Точная версия указана в original/SOURCE.json.</p></footer></main></html>

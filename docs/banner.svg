@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="350" viewBox="0 0 1200 350" role="img" aria-labelledby="title">
+<title id="title">Python с нуля — интерактивная книга на русском</title>
+<rect width="1200" height="350" rx="24" fill="#20332f"/>
+<circle cx="1150" cy="30" r="250" fill="#29483e"/>
+<circle cx="1150" cy="30" r="175" fill="none" stroke="#416452"/>
+<g font-family="Arial,DejaVu Sans,sans-serif">
+<text x="60" y="65" fill="#b3d4b9" font-size="15" letter-spacing="4">ИНТЕРАКТИВНАЯ КНИГА</text>
+<text x="56" y="150" fill="#faf7f0" font-size="65" font-weight="700">Python с нуля</text>
+<text x="60" y="205" fill="#d0ded1" font-size="25">Первые программы. Понятные объяснения.</text>
+<text x="60" y="242" fill="#d0ded1" font-size="25">В своём темпе, на русском.</text>
+<rect x="60" y="280" width="354" height="35" rx="17" fill="#d4e7ba"/>
+<text x="81" y="303" fill="#20332f" font-size="15" font-weight="700">30 ГЛАВ   /   ПРАКТИКА   /   ОФЛАЙН</text>
+</g>
+<g transform="translate(855 95)">
+<rect width="266" height="190" rx="14" fill="#f4f1e6"/>
+<path d="M14 0h238q14 0 14 14v21H0V14Q0 0 14 0" fill="#e1e5d7"/>
+<circle cx="21" cy="18" r="4" fill="#698b72"/><circle cx="36" cy="18" r="4" fill="#96ae83"/><circle cx="51" cy="18" r="4" fill="#c3ce9f"/>
+<g font-family="Consolas,DejaVu Sans Mono,monospace" font-size="17">
+<text x="21" y="72" fill="#236654">print(2 + 3)</text>
+<text x="21" y="113" fill="#20332f">5</text>
+<text x="21" y="160" fill="#698b72"># Всё начинается тут</text>
+</g></g></svg>
